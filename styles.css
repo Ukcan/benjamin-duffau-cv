@@ -3498,3 +3498,12 @@ footer {
   text-decoration: none;
 }
 .contact-merged--compact .contact-studio a:hover { text-decoration: underline; }
+/* --- CV rework: coherent contact (no residual min-height, grouped identity) --- */
+.contact-merged--compact .availability-item { min-height: 0; }
+.contact-merged--compact .contact-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+.contact-merged--compact .contact-identity .contact-studio { margin: 0; }
