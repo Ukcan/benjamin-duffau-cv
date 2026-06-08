@@ -3507,3 +3507,13 @@ footer {
   min-width: 0;
 }
 .contact-merged--compact .contact-identity .contact-studio { margin: 0; }
+/* --- CV: phone in contact identity --- */
+.contact-merged--compact .contact-identity .contact-phone {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.contact-merged--compact .contact-identity .contact-phone:hover { color: var(--primary); }
