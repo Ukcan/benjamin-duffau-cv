@@ -3528,3 +3528,33 @@ footer {
 .hero-text .intro { margin-top: 0; }
 .hero-text .cta-row { margin-top: clamp(0.3rem, 0.1rem + 0.4vw, 0.8rem); }
 .hero-photo-card { grid-row: auto; }
+/* ============================================================
+   CV — Polish micro-interactions (fluidite + ergonomie)
+   Auto-desactive par le bloc @media (prefers-reduced-motion).
+   ============================================================ */
+
+/* 1. Courbe d'easing premium homogene */
+.btn, .btn.primary, .btn.secondary, .filter-btn, .skill-chip, .meta-chip,
+.profile-focus-chip, .interest-tag, .timeline-item, .project-card,
+.interactive-item, .contact-link, .contact-phone, .menu a,
+.availability-item, .item-toggle, .detail-close, .project-card__cta {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 2. Survols plus vivants (le lift des boutons primaires existe deja) */
+.btn.secondary:hover { transform: translateY(-2px); }
+.skill-chip:hover,
+.filter-btn:hover,
+.profile-focus-chip:hover { transform: translateY(-2px); }
+.timeline-item:hover,
+.project-card:hover { transform: translateY(-3px); }
+
+/* 3. Retour tactile au clic (place apres les :hover pour gagner pendant l'appui) */
+.btn:active { transform: translateY(0) scale(0.97); transition-duration: 0.09s; }
+.skill-chip:active,
+.filter-btn:active,
+.profile-focus-chip:active,
+.meta-chip:active,
+.timeline-item:active,
+.project-card:active,
+.contact-link:active { transform: scale(0.985); transition-duration: 0.09s; }
