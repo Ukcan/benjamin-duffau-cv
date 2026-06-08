@@ -3550,3 +3550,14 @@ footer {
 .timeline-item:active,
 .project-card:active,
 .contact-link:active { transform: scale(0.985); transition-duration: 0.09s; }
+
+/* Tags "Terrains d'intervention" : strictement fixes, aucune animation */
+.profile-focus-chip,
+.profile-focus-chip:hover,
+.profile-focus-chip:active,
+.profile-focus-chip:focus,
+.profile-focus-chip:focus-visible {
+  transition: none !important;
+  animation: none !important;
+  transform: none !important;
+}
