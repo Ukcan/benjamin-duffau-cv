@@ -3517,3 +3517,14 @@ footer {
   letter-spacing: 0.02em;
 }
 .contact-merged--compact .contact-identity .contact-phone:hover { color: var(--primary); }
+/* --- CV: balanced hero (text grouped, centered vs photo) --- */
+.hero-content { align-items: center; align-content: center; }
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 0.7rem + 0.8vw, 1.5rem);
+}
+.hero-text .eyebrow { margin-bottom: 0; }
+.hero-text .intro { margin-top: 0; }
+.hero-text .cta-row { margin-top: clamp(0.3rem, 0.1rem + 0.4vw, 0.8rem); }
+.hero-photo-card { grid-row: auto; }
