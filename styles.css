@@ -1,26 +1,32 @@
 ﻿:root {
-  --bg: #0c1020;
-  --surface: rgba(15, 22, 40, 0.92);
-  --surface-glass: rgba(18, 27, 46, 0.84);
-  --surface-strong: rgba(10, 16, 31, 0.98);
-  --text: #fbf8f1;
-  --text-muted: #ddd6c8;
-  --text-soft: #a99f8e;
-  --border: rgba(188, 180, 164, 0.28);
-  --border-strong: rgba(233, 224, 206, 0.38);
-  --shadow: 0 16px 48px rgba(3, 8, 17, 0.28);
-  --shadow-soft: 0 8px 24px rgba(3, 8, 17, 0.18);
-  --focus: #ffd8a8;
-  --primary: #ffb86b;
-  --primary-contrast: #311800;
-  --primary-soft: rgba(255, 184, 107, 0.16);
-  --chip-bg: rgba(251, 248, 241, 0.038);
-  --chip-bg-hover: rgba(251, 248, 241, 0.09);
-  --chip-text: #fff6e8;
-  --accent-soft: rgba(255, 184, 107, 0.14);
-  --accent-line: rgba(255, 184, 107, 0.74);
-  --accent-line-soft: rgba(255, 184, 107, 0.28);
-  --accent-line-faint: rgba(255, 216, 168, 0.12);
+  --bg: #071318;
+  --surface: rgba(10, 29, 36, 0.92);
+  --surface-glass: rgba(12, 38, 47, 0.84);
+  --surface-strong: rgba(7, 22, 29, 0.98);
+  --text: #f4fbf8;
+  --text-muted: #c8d8d3;
+  --text-soft: #90aaa5;
+  --border: rgba(145, 193, 186, 0.26);
+  --border-strong: rgba(194, 236, 228, 0.36);
+  --shadow: 0 16px 48px rgba(0, 12, 18, 0.32);
+  --shadow-soft: 0 8px 24px rgba(0, 12, 18, 0.2);
+  --focus: #8ee7cf;
+  --primary: #5ed3c2;
+  --primary-contrast: #042321;
+  --primary-soft: rgba(94, 211, 194, 0.16);
+  --chip-bg: rgba(244, 251, 248, 0.044);
+  --chip-bg-hover: rgba(244, 251, 248, 0.1);
+  --chip-text: #ecfffb;
+  --accent-soft: rgba(94, 211, 194, 0.14);
+  --accent-line: rgba(94, 211, 194, 0.74);
+  --accent-line-soft: rgba(94, 211, 194, 0.28);
+  --accent-line-faint: rgba(142, 231, 207, 0.12);
+  --accent-profile: #8ee7cf;
+  --accent-skills: #f2c16b;
+  --accent-experience: #7ab8ff;
+  --accent-projects: #d99cf8;
+  --accent-formation: #ff9b8a;
+  --accent-contact: #5ed3c2;
   --detail-glow-x: 74%;
   --detail-glow-y: 18%;
   --detail-glow-strength: 0.2;
@@ -874,7 +880,7 @@ h2 {
   height: 0.78rem;
   border-radius: 999px;
   background: color-mix(in srgb, var(--bg) 76%, var(--primary));
-  border: 2px solid rgba(255, 184, 107, 0.45);
+  border: 2px solid color-mix(in srgb, var(--primary) 45%, transparent);
   box-shadow:
     0 0 0 5px color-mix(in srgb, var(--bg) 94%, transparent),
     0 0 18px color-mix(in srgb, var(--primary) 16%, transparent);
@@ -1857,6 +1863,50 @@ footer {
 
 .bento-card {
   padding: clamp(1.35rem, 1rem + 0.9vw, 2rem);
+}
+
+.bento-profil {
+  --primary: var(--accent-profile);
+  --focus: #c9fff2;
+  --primary-soft: color-mix(in srgb, var(--accent-profile) 17%, transparent);
+}
+
+.bento-competences {
+  --primary: var(--accent-skills);
+  --focus: #ffe3a6;
+  --primary-soft: color-mix(in srgb, var(--accent-skills) 16%, transparent);
+}
+
+.bento-experience {
+  --primary: var(--accent-experience);
+  --focus: #b9dcff;
+  --primary-soft: color-mix(in srgb, var(--accent-experience) 15%, transparent);
+}
+
+.bento-projets {
+  --primary: var(--accent-projects);
+  --focus: #edc6ff;
+  --primary-soft: color-mix(in srgb, var(--accent-projects) 15%, transparent);
+}
+
+.bento-formations {
+  --primary: var(--accent-formation);
+  --focus: #ffc6bd;
+  --primary-soft: color-mix(in srgb, var(--accent-formation) 15%, transparent);
+}
+
+.bento-contact {
+  --primary: var(--accent-contact);
+  --focus: #8ee7cf;
+  --primary-soft: color-mix(in srgb, var(--accent-contact) 15%, transparent);
+}
+
+.bento-card::after,
+.profile-summary,
+.projects-toolbar,
+.projects-viewer,
+.contact-panel {
+  border-color: color-mix(in srgb, var(--primary) 18%, var(--border));
 }
 
 .bento-hero-card {
