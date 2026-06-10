@@ -3788,3 +3788,100 @@ footer {
   .bento-row > :first-child,
   .bento-row > :last-child { grid-column: 1; grid-row: auto; }
 }
+
+/* ============================================================
+   Profil — piliers numérotés (ex-dropdown, désormais visible)
+   ============================================================ */
+.approach-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 0.85rem;
+  padding-top: 0.4rem;
+}
+.approach-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.05rem 1.1rem;
+  border: 1px solid rgba(206, 219, 241, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.022);
+}
+.approach-pillar__num {
+  margin: 0;
+  color: var(--primary);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+.approach-pillar__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.approach-pillar__text {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* Profil — lignes clé-valeur (même pattern que les faits projets) */
+.profile-facts {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+}
+.profile-facts > div {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(206, 219, 241, 0.08);
+}
+.profile-facts > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.profile-facts dt {
+  margin: 0;
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.profile-facts dd {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* Compétences — chips groupées sous libellés */
+.skill-groups {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.1rem;
+}
+.skill-group { display: grid; gap: 0.65rem; }
+.skill-group__label {
+  margin: 0;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(206, 219, 241, 0.1);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.skill-group__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .approach-pillars { grid-template-columns: 1fr; }
+  .profile-facts > div { grid-template-columns: 1fr; gap: 0.2rem; }
+}
