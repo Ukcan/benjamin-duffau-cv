@@ -814,6 +814,12 @@ updateProgress();
 setFilter("all", null);
 initCustomCursor();
 
+// Grille "approche" : ouverte par defaut sur desktop, repliee sur mobile
+const profileDisclosure = document.querySelector(".profile-disclosure");
+if (profileDisclosure && window.matchMedia("(max-width: 900px)").matches) {
+  profileDisclosure.removeAttribute("open");
+}
+
 
 
 

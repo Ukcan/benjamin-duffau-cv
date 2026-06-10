@@ -1344,23 +1344,34 @@ h2 {
 }
 
 #projets .projects-viewer__dot {
-  width: 0.8rem;
-  height: 0.8rem;
+  position: relative;
+  width: 2.75rem;
+  height: 2.75rem;
   padding: 0;
   border: 0;
+  background: none;
+  cursor: pointer;
+}
+#projets .projects-viewer__dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  transform: translate(-50%, -50%);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.16);
-  cursor: pointer;
   transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
 }
 
-#projets .projects-viewer__dot:hover,
-#projets .projects-viewer__dot:focus-visible {
-  transform: scale(1.08);
+#projets .projects-viewer__dot:hover::before,
+#projets .projects-viewer__dot:focus-visible::before {
+  transform: translate(-50%, -50%) scale(1.15);
   background: rgba(255, 255, 255, 0.28);
 }
 
-#projets .projects-viewer__dot.is-active {
+#projets .projects-viewer__dot.is-active::before {
   background: var(--primary);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 16%, transparent);
 }
@@ -2036,7 +2047,7 @@ footer {
 }
 
 .bento-competences .skill-chip {
-  min-height: 2.2rem;
+  min-height: 2.75rem;
   height: auto;
   justify-content: center;
   padding: 0.45rem 0.9rem;
