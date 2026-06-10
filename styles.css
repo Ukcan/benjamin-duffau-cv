@@ -3724,3 +3724,56 @@ footer {
 #projets .projects-viewer__pagination { order: 3; margin-right: auto; flex-wrap: nowrap; }
 #projets .projects-viewer__nav:first-child { order: 1; }
 #projets .projects-viewer__nav:last-child { order: 4; }
+
+/* ============================================================
+   Bento en rangées alignées (coutures symétriques)
+   R1 : Profil | Compétences — R2 : Expériences | Réalisations + Formations
+   ============================================================ */
+.bento-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bento-row {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+.bento-row > .section { width: auto; margin: 0; height: auto; min-width: 0; }
+/* Neutralise les placements herites de l'ancienne grille 12 colonnes */
+.bento-row > * { grid-row: 1; grid-column: auto; }
+.bento-row > :first-child { grid-column: 1; }
+.bento-row > :last-child { grid-column: 2; }
+.bento-stack > .section { grid-area: auto; }
+.bento-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+.bento-stack > .section { width: auto; margin: 0; }
+
+/* Cartes étirées : répartir le contenu plutôt que laisser un vide en bas */
+.bento-competences {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.bento-competences .skill-cloud { align-content: space-evenly; }
+.bento-experience {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.bento-experience .timeline {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bento-stack > .bento-formations { flex: 1 1 auto; }
+
+@media (max-width: 900px) {
+  .bento-row { grid-template-columns: 1fr; }
+  .bento-row > *,
+  .bento-row > :first-child,
+  .bento-row > :last-child { grid-column: 1; grid-row: auto; }
+}
