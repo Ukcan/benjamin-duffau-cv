@@ -1,32 +1,32 @@
 ﻿:root {
-  --bg: #071318;
-  --surface: rgba(10, 29, 36, 0.92);
-  --surface-glass: rgba(12, 38, 47, 0.84);
-  --surface-strong: rgba(7, 22, 29, 0.98);
-  --text: #f4fbf8;
-  --text-muted: #c8d8d3;
-  --text-soft: #90aaa5;
-  --border: rgba(145, 193, 186, 0.26);
-  --border-strong: rgba(194, 236, 228, 0.36);
-  --shadow: 0 16px 48px rgba(0, 12, 18, 0.32);
-  --shadow-soft: 0 8px 24px rgba(0, 12, 18, 0.2);
-  --focus: #8ee7cf;
-  --primary: #5ed3c2;
-  --primary-contrast: #042321;
-  --primary-soft: rgba(94, 211, 194, 0.16);
-  --chip-bg: rgba(244, 251, 248, 0.044);
-  --chip-bg-hover: rgba(244, 251, 248, 0.1);
-  --chip-text: #ecfffb;
-  --accent-soft: rgba(94, 211, 194, 0.14);
-  --accent-line: rgba(94, 211, 194, 0.74);
-  --accent-line-soft: rgba(94, 211, 194, 0.28);
-  --accent-line-faint: rgba(142, 231, 207, 0.12);
-  --accent-profile: #8ee7cf;
-  --accent-skills: #f2c16b;
-  --accent-experience: #7ab8ff;
-  --accent-projects: #d99cf8;
-  --accent-formation: #ff9b8a;
-  --accent-contact: #5ed3c2;
+  --bg: #101114;
+  --surface: rgba(24, 25, 29, 0.94);
+  --surface-glass: rgba(28, 30, 35, 0.86);
+  --surface-strong: rgba(14, 15, 18, 0.985);
+  --text: #f4f4f1;
+  --text-muted: #cdcdc9;
+  --text-soft: #9a9a95;
+  --border: rgba(202, 204, 208, 0.20);
+  --border-strong: rgba(214, 216, 220, 0.32);
+  --shadow: 0 18px 56px rgba(4, 5, 7, 0.48);
+  --shadow-soft: 0 10px 30px rgba(4, 5, 7, 0.34);
+  --focus: #dedcd3;
+  --primary: #d2d0c7;
+  --primary-contrast: #16171a;
+  --primary-soft: rgba(210, 208, 199, 0.15);
+  --chip-bg: rgba(248, 248, 245, 0.046);
+  --chip-bg-hover: rgba(248, 248, 245, 0.1);
+  --chip-text: #f1f1ed;
+  --accent-soft: rgba(210, 208, 199, 0.12);
+  --accent-line: rgba(210, 208, 199, 0.6);
+  --accent-line-soft: rgba(210, 208, 199, 0.26);
+  --accent-line-faint: rgba(214, 216, 220, 0.12);
+  --accent-profile: #d2d0c7;
+  --accent-skills: #d2d0c7;
+  --accent-experience: #d2d0c7;
+  --accent-projects: #d2d0c7;
+  --accent-formation: #d2d0c7;
+  --accent-contact: #d2d0c7;
   --detail-glow-x: 74%;
   --detail-glow-y: 18%;
   --detail-glow-strength: 0.2;
@@ -263,7 +263,7 @@ body.detail-open {
   transform: translateY(-180%);
   padding: 0.72rem 1rem;
   border-radius: 999px;
-  background: rgba(10, 15, 26, 0.96);
+  background: rgba(10, 6, 22, 0.96);
   color: var(--text);
   text-decoration: none;
   border: 1.5px solid rgba(255, 255, 255, 0.28);
@@ -292,10 +292,10 @@ body.detail-open {
   z-index: -2;
   overflow: hidden;
   background:
-    linear-gradient(rgba(194, 216, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(194, 216, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(rgba(126, 157, 214, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(126, 157, 214, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(214, 216, 220, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 216, 220, 0.018) 1px, transparent 1px),
+    linear-gradient(rgba(150, 152, 158, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(150, 152, 158, 0.03) 1px, transparent 1px),
     var(--bg);
   background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px, auto;
   background-position: 0 0, 0 0, -1px -1px, -1px -1px, 0 0;
@@ -311,27 +311,50 @@ body.detail-open {
 .page-bg::before {
   inset: 0;
   background:
-    radial-gradient(circle at 14% 18%, rgba(221, 232, 255, 0.08), transparent 22%),
-    radial-gradient(circle at 82% 16%, rgba(180, 204, 255, 0.05), transparent 20%),
-    radial-gradient(circle at 72% 76%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 24%),
+    radial-gradient(circle at 14% 18%, rgba(210, 208, 199, 0.07), transparent 24%),
+    radial-gradient(circle at 82% 16%, rgba(214, 216, 220, 0.05), transparent 22%),
+    radial-gradient(circle at 72% 76%, color-mix(in srgb, var(--primary) 9%, transparent), transparent 26%),
     linear-gradient(180deg, transparent 3rem, var(--accent-line-faint) 3rem, var(--accent-line-faint) 3.08rem, transparent 3.08rem),
     linear-gradient(180deg, transparent calc(100% - 3.08rem), var(--accent-line-faint) calc(100% - 3.08rem), var(--accent-line-faint) calc(100% - 3rem), transparent calc(100% - 3rem));
-  opacity: 0.95;
+  opacity: 0.82;
 }
 
 .page-bg::after {
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 12, 19, 0.04), rgba(8, 12, 19, 0.36));
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(210, 208, 199, 0.045), transparent 45%),
+    linear-gradient(180deg, rgba(4, 5, 7, 0.12), rgba(4, 5, 7, 0.72));
 }
+
 
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--primary) 95%, transparent), color-mix(in srgb, var(--focus) 95%, transparent));
+  height: 2px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--primary) 72%, transparent), color-mix(in srgb, var(--focus) 92%, transparent));
+  border-radius: 0 999px 999px 0;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--primary) 22%, transparent);
+  transition: width 0.16s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 140;
+}
+
+.scroll-progress::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--focus) 78%, white) 0%, color-mix(in srgb, var(--primary) 46%, transparent) 34%, transparent 72%);
+  box-shadow:
+    0 0 16px color-mix(in srgb, var(--focus) 54%, transparent),
+    0 0 34px color-mix(in srgb, var(--primary) 38%, transparent);
+  filter: blur(5px);
+  opacity: 0.76;
+  transform: translateY(-50%) scale(0.95);
 }
 
 .hero,
@@ -354,7 +377,7 @@ footer.section {
   padding: 0.8rem 1rem;
   border: 1px solid rgba(206, 219, 241, 0.2);
   border-radius: 999px;
-  background: rgba(10, 15, 26, 0.82);
+  background: rgba(10, 6, 22, 0.84);
   backdrop-filter: blur(18px) saturate(110%);
   box-shadow: var(--shadow-soft);
   display: grid;
@@ -366,9 +389,9 @@ footer.section {
 }
 
 .top-nav.scrolled {
-  background: rgba(10, 15, 26, 0.92);
-  border-color: rgba(206, 219, 241, 0.28);
-  box-shadow: 0 16px 40px rgba(3, 8, 17, 0.34);
+  background: rgba(16, 17, 20, 0.94);
+  border-color: rgba(214, 216, 220, 0.22);
+  box-shadow: 0 16px 40px rgba(4, 5, 7, 0.44);
 }
 
 .brand {
@@ -2222,6 +2245,19 @@ footer {
   grid-column: 1 / -1;
 }
 
+.bento-formations .project-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+
+.bento-formations .project-card h3 {
+  min-height: 3.05rem;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.85rem;
+}
+
 .bento-competences .skill-cloud {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3934,4 +3970,107 @@ footer {
 @media (max-width: 900px) {
   .approach-pillars { grid-template-columns: 1fr; }
   .profile-facts > div { grid-template-columns: 1fr; gap: 0.2rem; }
+  .bento-formations .project-card h3 { min-height: 0; }
+}
+
+/* --- CV contact: scannable action panel --- */
+.contact-merged--compact {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-merged--compact .availability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.contact-merged--compact .availability-item {
+  min-height: 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 18%, var(--border));
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.018);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.contact-merged--compact .availability-label {
+  margin-bottom: 0.55rem;
+  color: var(--primary);
+}
+
+.contact-merged--compact .availability-value {
+  font-size: clamp(0.96rem, 0.9rem + 0.18vw, 1.05rem);
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.contact-merged--compact .contact-bar {
+  display: grid;
+  grid-template-columns: minmax(19rem, 0.9fr) minmax(18rem, 1fr);
+  align-items: stretch;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 28%),
+    rgba(255, 255, 255, 0.022);
+}
+
+.contact-merged--compact .contact-identity {
+  display: grid;
+  align-content: center;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 0.25rem 0.4rem;
+}
+
+.contact-merged--compact .contact-identity .contact-link {
+  width: fit-content;
+  margin: 0;
+  font-size: clamp(1.45rem, 1.08rem + 1.1vw, 2.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.contact-merged--compact .contact-identity .contact-phone {
+  width: fit-content;
+  font-size: 1.02rem;
+  color: var(--text);
+}
+
+.contact-merged--compact .contact-studio {
+  line-height: 1.55;
+}
+
+.contact-merged--compact .cta-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr) minmax(0, 0.8fr);
+  gap: 0.75rem;
+  align-self: center;
+  margin-top: 0;
+}
+
+.contact-merged--compact .cta-row .btn {
+  width: 100%;
+  min-width: 0;
+  min-height: 3.55rem;
+  padding-inline: 1rem;
+  font-size: clamp(0.92rem, 0.86rem + 0.18vw, 1rem);
+}
+
+@media (max-width: 760px) {
+  .contact-merged--compact .availability-grid,
+  .contact-merged--compact .contact-bar,
+  .contact-merged--compact .cta-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-merged--compact .contact-bar {
+    padding: 0.85rem;
+  }
 }

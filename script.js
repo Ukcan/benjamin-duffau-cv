@@ -519,12 +519,14 @@ function updateActiveMenu() {
 
 function updateProgress() {
   const el = document.querySelector(".scroll-progress");
-  if (!el) return;
 
   const scrollTop = window.scrollY;
   const full = document.documentElement.scrollHeight - window.innerHeight;
-  const ratio = full > 0 ? (scrollTop / full) * 100 : 0;
-  el.style.width = `${ratio}%`;
+  const ratio = full > 0 ? Math.max(0, Math.min(100, (scrollTop / full) * 100)) : 0;
+
+  if (el) {
+    el.style.width = `${ratio}%`;
+  }
 
   if (topNav) {
     topNav.classList.toggle("scrolled", scrollTop > 8);
@@ -813,8 +815,6 @@ updateActiveMenu();
 updateProgress();
 setFilter("all", null);
 initCustomCursor();
-
-
 
 
 
