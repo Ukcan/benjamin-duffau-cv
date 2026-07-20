@@ -3523,10 +3523,15 @@ footer {
 .timeline {
   max-height: none;
   overflow: visible;
-  padding-left: 1.75rem;
-  padding-right: 0.25rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 .timeline-item__year { display: none; }
+/* Cards d'experience flush avec le titre H2 : on retire le rail + les pastilles
+   (redondants avec le style "carte bordee") qui creaient un retrait de 28px. */
+.timeline::before,
+.timeline::after,
+.timeline-item::before { display: none !important; content: none !important; }
 /* --- CV rework: robust column balance (shorter column's last card fills) --- */
 .bento-col > .section:last-child { flex: 1 1 auto; }
 @media (max-width: 900px) {
@@ -3977,12 +3982,14 @@ footer {
 .contact-merged--compact {
   display: grid;
   gap: 1rem;
+  align-items: stretch;
 }
 
 .contact-merged--compact .availability-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.85rem;
+  margin-top: 0;
 }
 
 .contact-merged--compact .availability-item {
