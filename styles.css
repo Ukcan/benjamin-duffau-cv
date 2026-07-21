@@ -375,11 +375,13 @@ footer.section {
   transform: translateX(-50%);
   width: var(--max-width);
   padding: 0.8rem 1rem;
-  border: 1px solid rgba(216, 216, 212, 0.2);
+  border: 1px solid rgba(216, 216, 212, 0.28);
   border-radius: 999px;
-  background: rgba(16, 17, 20, 0.84);
-  backdrop-filter: blur(18px) saturate(110%);
-  box-shadow: var(--shadow-soft);
+  background: rgba(37, 38, 44, 0.82);
+  backdrop-filter: blur(20px) saturate(120%);
+  box-shadow:
+    0 14px 38px rgba(4, 5, 7, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
@@ -389,9 +391,11 @@ footer.section {
 }
 
 .top-nav.scrolled {
-  background: rgba(16, 17, 20, 0.94);
-  border-color: rgba(216, 216, 212, 0.22);
-  box-shadow: 0 16px 40px rgba(4, 5, 7, 0.44);
+  background: rgba(33, 34, 40, 0.94);
+  border-color: rgba(216, 216, 212, 0.34);
+  box-shadow:
+    0 18px 44px rgba(4, 5, 7, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 .brand {
