@@ -7,7 +7,7 @@
   --text-muted: #cdcdc9;
   --text-soft: #9a9a95;
   --border: rgba(202, 204, 208, 0.20);
-  --border-strong: rgba(214, 216, 220, 0.32);
+  --border-strong: rgba(216, 216, 212, 0.32);
   --shadow: 0 18px 56px rgba(4, 5, 7, 0.48);
   --shadow-soft: 0 10px 30px rgba(4, 5, 7, 0.34);
   --focus: #dedcd3;
@@ -20,7 +20,7 @@
   --accent-soft: rgba(210, 208, 199, 0.12);
   --accent-line: rgba(210, 208, 199, 0.6);
   --accent-line-soft: rgba(210, 208, 199, 0.26);
-  --accent-line-faint: rgba(214, 216, 220, 0.12);
+  --accent-line-faint: rgba(216, 216, 212, 0.12);
   --accent-profile: #d2d0c7;
   --accent-skills: #d2d0c7;
   --accent-experience: #d2d0c7;
@@ -121,7 +121,7 @@ body.cursor-enhanced .contact-link {
 .cursor-halo {
   width: 42px;
   height: 42px;
-  border: 1px solid rgba(206, 219, 241, 0.32);
+  border: 1px solid rgba(216, 216, 212, 0.32);
   border-radius: 999px;
   background: radial-gradient(circle, color-mix(in srgb, var(--focus) 12%, transparent), transparent);
   backdrop-filter: blur(4px);
@@ -292,8 +292,8 @@ body.detail-open {
   z-index: -2;
   overflow: hidden;
   background:
-    linear-gradient(rgba(214, 216, 220, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(214, 216, 220, 0.018) 1px, transparent 1px),
+    linear-gradient(rgba(216, 216, 212, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 216, 212, 0.018) 1px, transparent 1px),
     linear-gradient(rgba(150, 152, 158, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(150, 152, 158, 0.03) 1px, transparent 1px),
     var(--bg);
@@ -312,7 +312,7 @@ body.detail-open {
   inset: 0;
   background:
     radial-gradient(circle at 14% 18%, rgba(210, 208, 199, 0.07), transparent 24%),
-    radial-gradient(circle at 82% 16%, rgba(214, 216, 220, 0.05), transparent 22%),
+    radial-gradient(circle at 82% 16%, rgba(216, 216, 212, 0.05), transparent 22%),
     radial-gradient(circle at 72% 76%, color-mix(in srgb, var(--primary) 9%, transparent), transparent 26%),
     linear-gradient(180deg, transparent 3rem, var(--accent-line-faint) 3rem, var(--accent-line-faint) 3.08rem, transparent 3.08rem),
     linear-gradient(180deg, transparent calc(100% - 3.08rem), var(--accent-line-faint) calc(100% - 3.08rem), var(--accent-line-faint) calc(100% - 3rem), transparent calc(100% - 3rem));
@@ -375,9 +375,9 @@ footer.section {
   transform: translateX(-50%);
   width: var(--max-width);
   padding: 0.8rem 1rem;
-  border: 1px solid rgba(206, 219, 241, 0.2);
+  border: 1px solid rgba(216, 216, 212, 0.2);
   border-radius: 999px;
-  background: rgba(10, 6, 22, 0.84);
+  background: rgba(16, 17, 20, 0.84);
   backdrop-filter: blur(18px) saturate(110%);
   box-shadow: var(--shadow-soft);
   display: grid;
@@ -390,7 +390,7 @@ footer.section {
 
 .top-nav.scrolled {
   background: rgba(16, 17, 20, 0.94);
-  border-color: rgba(214, 216, 220, 0.22);
+  border-color: rgba(216, 216, 212, 0.22);
   box-shadow: 0 16px 40px rgba(4, 5, 7, 0.44);
 }
 
@@ -472,7 +472,7 @@ footer.section {
 .menu a[aria-current="page"] {
   color: var(--text);
   background: rgba(255, 255, 255, 0.045);
-  border-color: rgba(206, 219, 241, 0.14);
+  border-color: rgba(216, 216, 212, 0.14);
 }
 
 main section,
@@ -583,7 +583,7 @@ h1 {
   min-height: 64px;
   justify-content: flex-start;
   padding: 1rem 1.15rem;
-  border: 1px solid rgba(206, 219, 241, 0.22);
+  border: 1px solid rgba(216, 216, 212, 0.22);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.03);
   color: var(--chip-text);
@@ -788,7 +788,7 @@ h2 {
   display: grid;
   gap: 0.2rem;
   padding: 0.85rem 0.95rem;
-  border: 1px solid rgba(206, 219, 241, 0.14);
+  border: 1px solid rgba(216, 216, 212, 0.14);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.025);
   color: var(--text);
@@ -801,12 +801,12 @@ h2 {
 .timeline-nav__button:hover,
 .timeline-nav__button:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(215, 226, 245, 0.24);
+  border-color: rgba(222, 221, 216, 0.24);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .timeline-nav__button.is-active {
-  border-color: color-mix(in srgb, var(--primary) 36%, rgba(215, 226, 245, 0.18));
+  border-color: color-mix(in srgb, var(--primary) 36%, rgba(222, 221, 216, 0.18));
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--primary) 12%, transparent), transparent 85%),
     rgba(255, 255, 255, 0.045);
@@ -850,7 +850,7 @@ h2 {
   bottom: 1rem;
   width: 2px;
   border-radius: 999px;
-  background: rgba(206, 219, 241, 0.12);
+  background: rgba(216, 216, 212, 0.12);
 }
 
 .timeline::after {
@@ -917,7 +917,7 @@ h2 {
   border-radius: inherit;
   pointer-events: none;
   z-index: 0;
-  border: 1px solid rgba(206, 219, 241, 0.2);
+  border: 1px solid rgba(216, 216, 212, 0.2);
   background:
     linear-gradient(90deg, color-mix(in srgb, var(--primary) 7%, transparent), transparent 30%),
     rgba(255, 255, 255, 0.04);
@@ -938,7 +938,7 @@ h2 {
 .timeline-item:focus-within::after,
 .timeline-item.is-active::after,
 .timeline-item.open::after {
-  border-color: color-mix(in srgb, var(--primary) 36%, rgba(215, 226, 245, 0.22));
+  border-color: color-mix(in srgb, var(--primary) 36%, rgba(222, 221, 216, 0.22));
   background:
     linear-gradient(90deg, color-mix(in srgb, var(--primary) 11%, transparent), transparent 38%),
     rgba(255, 255, 255, 0.06);
@@ -967,7 +967,7 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 0.3rem 0.62rem;
-  border: 1px solid rgba(206, 219, 241, 0.14);
+  border: 1px solid rgba(216, 216, 212, 0.14);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--text-soft);
@@ -1081,7 +1081,7 @@ h2 {
   display: grid;
   gap: 1rem;
   padding: 1rem;
-  border: 1px solid rgba(206, 219, 241, 0.12);
+  border: 1px solid rgba(216, 216, 212, 0.12);
   border-radius: calc(var(--radius-card) - 6px);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
@@ -1145,7 +1145,7 @@ h2 {
 
 .interest-tag {
   padding: 0.65rem 1rem;
-  border: 1px solid rgba(206, 219, 241, 0.16);
+  border: 1px solid rgba(216, 216, 212, 0.16);
   background: rgba(255, 255, 255, 0.035);
   color: var(--chip-text);
   cursor: default;
@@ -1179,7 +1179,7 @@ h2 {
   display: grid;
   align-content: start;
   padding: 1rem 1.05rem;
-  border: 1px solid rgba(206, 219, 241, 0.12);
+  border: 1px solid rgba(216, 216, 212, 0.12);
   border-radius: 16px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.022), rgba(255, 255, 255, 0.01)),
@@ -1225,7 +1225,7 @@ h2 {
   display: grid;
   align-content: start;
   padding: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
-  border: 1px solid rgba(206, 219, 241, 0.12);
+  border: 1px solid rgba(216, 216, 212, 0.12);
   border-radius: calc(var(--radius-card) - 6px);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.012)),
@@ -1310,7 +1310,7 @@ h2 {
   gap: 1rem;
   margin-top: var(--space-4);
   padding: 1rem;
-  border: 1px solid rgba(206, 219, 241, 0.12);
+  border: 1px solid rgba(216, 216, 212, 0.12);
   border-radius: calc(var(--radius-card) - 6px);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.012)),
@@ -1331,7 +1331,7 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 0.6rem 0.95rem;
-  border: 1px solid rgba(206, 219, 241, 0.18);
+  border: 1px solid rgba(216, 216, 212, 0.18);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
@@ -1345,7 +1345,7 @@ h2 {
 #projets .projects-viewer__nav:hover:not(:disabled),
 #projets .projects-viewer__nav:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(215, 226, 245, 0.28);
+  border-color: rgba(222, 221, 216, 0.28);
   background: rgba(255, 255, 255, 0.07);
 }
 
@@ -1464,7 +1464,7 @@ h2 {
   align-items: center;
   min-height: 2rem;
   padding: 0.35rem 0.72rem;
-  border: 1px solid rgba(206, 219, 241, 0.16);
+  border: 1px solid rgba(216, 216, 212, 0.16);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--chip-text);
@@ -1497,7 +1497,7 @@ h2 {
   justify-content: center;
   min-height: 2.2rem;
   padding: 0.45rem 0.8rem;
-  border: 1px solid rgba(206, 219, 241, 0.18);
+  border: 1px solid rgba(216, 216, 212, 0.18);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
@@ -1510,12 +1510,12 @@ h2 {
 #projets .project-card:hover .project-card__cta,
 #projets .project-card:focus-visible .project-card__cta {
   transform: translateX(2px);
-  border-color: rgba(215, 226, 245, 0.3);
+  border-color: rgba(222, 221, 216, 0.3);
   background: rgba(255, 255, 255, 0.07);
 }
 
 .project-card:hover {
-  border-color: rgba(215, 226, 245, 0.28);
+  border-color: rgba(222, 221, 216, 0.28);
 }
 
 .project-card:hover::after,
@@ -1578,11 +1578,11 @@ h2 {
 .interactive-item:hover,
 .interactive-item:focus-visible {
   transform: translateY(-2px);
-  border-color: rgba(215, 226, 245, 0.28);
+  border-color: rgba(222, 221, 216, 0.28);
 }
 
 .project-card:hover {
-  border-color: rgba(215, 226, 245, 0.28);
+  border-color: rgba(222, 221, 216, 0.28);
   box-shadow: 0 14px 28px rgba(3, 8, 17, 0.14);
 }
 
@@ -1957,7 +1957,7 @@ footer {
   display: grid;
   gap: 0.85rem;
   padding: 1.35rem 1.35rem 1.45rem;
-  border: 1px solid rgba(206, 219, 241, 0.14);
+  border: 1px solid rgba(216, 216, 212, 0.14);
   border-radius: var(--radius-card);
   background: rgba(255, 255, 255, 0.015);
   box-shadow: 0 10px 24px rgba(3, 8, 17, 0.12);
@@ -2066,7 +2066,7 @@ footer {
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem 1.05rem 1.1rem;
-  border: 1px solid rgba(206, 219, 241, 0.16);
+  border: 1px solid rgba(216, 216, 212, 0.16);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.022);
 }
@@ -2079,7 +2079,7 @@ footer {
 .profile-summary-label {
   margin: 0;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(206, 219, 241, 0.1);
+  border-bottom: 1px solid rgba(216, 216, 212, 0.1);
   color: var(--primary);
   font-size: 0.7rem;
   font-weight: 700;
@@ -2144,7 +2144,7 @@ footer {
   position: relative;
   min-height: 100%;
   padding: 1rem 1.05rem 1.12rem;
-  border: 1px solid rgba(206, 219, 241, 0.14);
+  border: 1px solid rgba(216, 216, 212, 0.14);
   border-radius: 14px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
@@ -2399,7 +2399,7 @@ footer {
     align-items: stretch;
     gap: 0.35rem;
     padding: 0.75rem;
-    border: 1px solid rgba(206, 219, 241, 0.22);
+    border: 1px solid rgba(216, 216, 212, 0.22);
     border-radius: 24px;
     background: rgba(10, 15, 26, 0.96);
     backdrop-filter: blur(18px) saturate(110%);
@@ -3282,7 +3282,7 @@ footer {
   align-items: center;
   min-height: 2rem;
   padding: 0.35rem 0.72rem;
-  border: 1px solid rgba(206, 219, 241, 0.14);
+  border: 1px solid rgba(216, 216, 212, 0.14);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.045);
   color: #eef3fc;
@@ -3375,7 +3375,7 @@ footer {
 
 .detail-page.mode-sheet .detail-slot:hover {
   transform: translateY(-5px) scale(1.01);
-  border-color: rgba(214, 226, 245, 0.24);
+  border-color: rgba(222, 221, 216, 0.24);
   box-shadow: 0 20px 40px rgba(3, 8, 17, 0.22);
 }
 
@@ -3386,7 +3386,7 @@ footer {
 .detail-page.mode-sheet .detail-chip:hover {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(206, 219, 241, 0.24);
+  border-color: rgba(216, 216, 212, 0.24);
 }
 
 .detail-card::-webkit-scrollbar {
@@ -3400,7 +3400,7 @@ footer {
 .detail-card::-webkit-scrollbar-thumb {
   border: 2px solid transparent;
   border-radius: 999px;
-  background: rgba(206, 219, 241, 0.22);
+  background: rgba(216, 216, 212, 0.22);
   background-clip: padding-box;
 }
 
@@ -3681,7 +3681,7 @@ footer {
 .project-card__preview {
   position: relative;
   border-radius: 12px;
-  border: 1px solid rgba(206, 219, 241, 0.18);
+  border: 1px solid rgba(216, 216, 212, 0.18);
   overflow: hidden;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
@@ -3695,8 +3695,8 @@ footer {
   pointer-events: none;
   opacity: 0.55;
   background-image:
-    linear-gradient(rgba(206, 219, 241, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(206, 219, 241, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(216, 216, 212, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 216, 212, 0.06) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 .pcp-chrome {
@@ -3706,7 +3706,7 @@ footer {
   gap: 0.4rem;
   align-items: center;
   padding: 0.55rem 0.7rem;
-  border-bottom: 1px solid rgba(206, 219, 241, 0.12);
+  border-bottom: 1px solid rgba(216, 216, 212, 0.12);
   background: rgba(255, 255, 255, 0.025);
 }
 .pcp-chrome span {
@@ -3727,19 +3727,19 @@ footer {
   height: 0.7rem;
   width: 55%;
   border-radius: 6px;
-  background: rgba(206, 219, 241, 0.12);
+  background: rgba(216, 216, 212, 0.12);
 }
 .pcp-bar--accent {
   width: 44%;
   background: linear-gradient(90deg, color-mix(in srgb, var(--primary) 82%, transparent), color-mix(in srgb, var(--focus) 55%, transparent));
 }
 .pcp-rows { display: grid; gap: 0.45rem; }
-.pcp-line { height: 0.55rem; border-radius: 5px; background: rgba(206, 219, 241, 0.1); }
+.pcp-line { height: 0.55rem; border-radius: 5px; background: rgba(216, 216, 212, 0.1); }
 .pcp-line--short { width: 68%; }
 .pcp-block {
   height: 2.5rem;
   border-radius: 8px;
-  border: 1px dashed rgba(206, 219, 241, 0.2);
+  border: 1px dashed rgba(216, 216, 212, 0.2);
   background: rgba(255, 255, 255, 0.022);
 }
 
@@ -3754,7 +3754,7 @@ footer {
   gap: 0.75rem;
   align-items: baseline;
   padding-bottom: 0.55rem;
-  border-bottom: 1px solid rgba(206, 219, 241, 0.08);
+  border-bottom: 1px solid rgba(216, 216, 212, 0.08);
 }
 .project-card__facts > div:last-child { border-bottom: 0; padding-bottom: 0; }
 .project-card__facts dt {
@@ -3819,7 +3819,7 @@ footer {
   order: 2;
   margin-top: 0.15rem;
   padding: 0.85rem 0 0;
-  border-top: 1px solid rgba(206, 219, 241, 0.12);
+  border-top: 1px solid rgba(216, 216, 212, 0.12);
 }
 #projets .project-grid { order: 1; }
 #projets .projects-viewer__position { order: 2; margin-left: auto; }
@@ -3895,7 +3895,7 @@ footer {
   flex-direction: column;
   gap: 0.4rem;
   padding: 1rem 1.05rem 1.1rem;
-  border: 1px solid rgba(206, 219, 241, 0.16);
+  border: 1px solid rgba(216, 216, 212, 0.16);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.022);
 }
@@ -3930,7 +3930,7 @@ footer {
   gap: 0.75rem;
   align-items: baseline;
   padding-bottom: 0.55rem;
-  border-bottom: 1px solid rgba(206, 219, 241, 0.08);
+  border-bottom: 1px solid rgba(216, 216, 212, 0.08);
 }
 .profile-facts > div:last-child { border-bottom: 0; padding-bottom: 0; }
 .profile-facts dt {
@@ -3959,7 +3959,7 @@ footer {
 .skill-group__label {
   margin: 0;
   padding-bottom: 0.45rem;
-  border-bottom: 1px solid rgba(206, 219, 241, 0.1);
+  border-bottom: 1px solid rgba(216, 216, 212, 0.1);
   color: var(--primary);
   font-size: 0.7rem;
   font-weight: 700;
