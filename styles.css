@@ -4056,18 +4056,19 @@ footer {
 }
 
 .contact-merged--compact .cta-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr) minmax(0, 0.8fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   align-self: center;
   margin-top: 0;
 }
 
 .contact-merged--compact .cta-row .btn {
-  width: 100%;
+  width: auto;
   min-width: 0;
   min-height: 3.55rem;
-  padding-inline: 1rem;
+  padding-inline: 1.2rem;
+  white-space: nowrap;
   font-size: clamp(0.92rem, 0.86rem + 0.18vw, 1rem);
 }
 
