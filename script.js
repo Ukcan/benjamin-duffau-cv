@@ -497,23 +497,58 @@ if ("IntersectionObserver" in window) {
 const sections = document.querySelectorAll("main section, footer.section");
 const topNav = document.querySelector(".top-nav");
 
+const navOrder = ["profil", "competences", "experience", "projets", "formations", "contact"];
+
 function updateActiveMenu() {
-  const point = window.scrollY + 140;
+  const point = window.scrollY + 160;
 
-  sections.forEach((section) => {
-    const inRange = point >= section.offsetTop && point < section.offsetTop + section.offsetHeight;
-    if (!inRange) return;
+  // Sections dans l'ordre de lecture, avec positions absolues (robuste vs offsetParent)
+  const secs = navOrder
+    .map((id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { id, top: r.top + window.scrollY, bottom: r.bottom + window.scrollY };
+    })
+    .filter(Boolean);
+  if (!secs.length) return;
 
-    const id = section.getAttribute("id");
-    menuLinks.forEach((link) => {
-      const target = link.getAttribute("href");
-      const active = target === `#${id}`;
-      if (active) {
-        link.setAttribute("aria-current", "page");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
+  // Regroupe les sections côte à côte (même haut = même rangée)
+  const groups = [];
+  secs.forEach((s) => {
+    const g = groups.find((grp) => Math.abs(grp.top - s.top) < 12);
+    if (g) {
+      g.items.push(s);
+      g.bottom = Math.max(g.bottom, s.bottom);
+    } else {
+      groups.push({ top: s.top, bottom: s.bottom, items: [s] });
+    }
+  });
+
+  // La rangée franchie la plus basse gagne ; sous-zone = item actif dans l'ordre
+  let activeId = secs[0].id;
+  groups.forEach((g) => {
+    if (point < g.top) return;
+    const n = g.items.length;
+    const band = Math.max(1, (g.bottom - g.top) / n);
+    let idx = Math.floor((point - g.top) / band);
+    idx = Math.min(Math.max(idx, 0), n - 1);
+    activeId = g.items[idx].id;
+  });
+
+  // Bas de page : le point de déclenchement ne peut pas atteindre la dernière
+  // section, on la force donc quand on touche le bas.
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) {
+    activeId = secs[secs.length - 1].id;
+  }
+
+  menuLinks.forEach((link) => {
+    const active = link.getAttribute("href") === `#${activeId}`;
+    if (active) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
   });
 }
 
