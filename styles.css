@@ -4081,3 +4081,26 @@ footer {
     padding: 0.85rem;
   }
 }
+
+/* ============================================================
+   Chemin de lecture — numéros de séquence + état actif renforcé
+   ============================================================ */
+.bento-card .section-head h2[data-index]::before {
+  content: attr(data-index) " / 06";
+  display: block;
+  order: -1;
+  font-family: "Work Sans", "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  opacity: 0.9;
+}
+
+/* Nav : section active clairement éclairée (pas seulement au survol) */
+.menu a[aria-current="page"] {
+  color: var(--text);
+  background: rgba(216, 216, 212, 0.14);
+  border: 1px solid rgba(216, 216, 212, 0.32);
+  font-weight: 700;
+}
