@@ -3981,6 +3981,7 @@ footer {
 /* --- CV contact: scannable action panel --- */
 .contact-merged--compact {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
   align-items: stretch;
 }
