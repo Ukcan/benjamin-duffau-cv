@@ -1,42 +1,42 @@
 ﻿:root {
-  --bg: #101114;
-  --surface: rgba(24, 25, 29, 0.94);
-  --surface-glass: rgba(28, 30, 35, 0.86);
-  --surface-strong: rgba(14, 15, 18, 0.985);
-  --text: #f4f4f1;
-  --text-muted: #cdcdc9;
-  --text-soft: #9a9a95;
-  --border: rgba(202, 204, 208, 0.20);
-  --border-strong: rgba(216, 216, 212, 0.32);
-  --shadow: 0 18px 56px rgba(4, 5, 7, 0.48);
-  --shadow-soft: 0 10px 30px rgba(4, 5, 7, 0.34);
-  --focus: #dedcd3;
-  --primary: #d2d0c7;
-  --primary-contrast: #16171a;
-  --primary-soft: rgba(210, 208, 199, 0.15);
-  --chip-bg: rgba(248, 248, 245, 0.046);
-  --chip-bg-hover: rgba(248, 248, 245, 0.1);
-  --chip-text: #f1f1ed;
-  --accent-soft: rgba(210, 208, 199, 0.12);
-  --accent-line: rgba(210, 208, 199, 0.6);
-  --accent-line-soft: rgba(210, 208, 199, 0.26);
-  --accent-line-faint: rgba(216, 216, 212, 0.12);
-  --accent-profile: #d2d0c7;
-  --accent-skills: #d2d0c7;
-  --accent-experience: #d2d0c7;
-  --accent-projects: #d2d0c7;
-  --accent-formation: #d2d0c7;
-  --accent-contact: #d2d0c7;
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.92);
+  --surface-strong: #ffffff;
+  --text: #111111;
+  --text-muted: #3a3a38;
+  --text-soft: #6b6b66;
+  --border: #111111;
+  --border-strong: #111111;
+  --shadow: 6px 6px 0 #111111;
+  --shadow-soft: 4px 4px 0 #111111;
+  --focus: #e4002b;
+  --primary: #e4002b;
+  --primary-contrast: #ffffff;
+  --primary-soft: rgba(228, 0, 43, 0.10);
+  --chip-bg: #ffffff;
+  --chip-bg-hover: #f2efe8;
+  --chip-text: #111111;
+  --accent-soft: rgba(228, 0, 43, 0.08);
+  --accent-line: #e4002b;
+  --accent-line-soft: rgba(228, 0, 43, 0.5);
+  --accent-line-faint: rgba(17, 17, 17, 0.14);
+  --accent-profile: #e4002b;
+  --accent-skills: #e4002b;
+  --accent-experience: #e4002b;
+  --accent-projects: #e4002b;
+  --accent-formation: #e4002b;
+  --accent-contact: #e4002b;
   --detail-glow-x: 74%;
   --detail-glow-y: 18%;
   --detail-glow-strength: 0.2;
 
-  --radius-xs: 12px;
-  --radius-sm: 16px;
-  --radius-md: 24px;
-  --radius-lg: 32px;
-  --radius-xl: 40px;
-  --radius-card: 18px;
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-card: 0px;
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -4110,3 +4110,108 @@ footer {
   border: 1px solid rgba(216, 216, 212, 0.32);
   font-weight: 700;
 }
+
+/* ============================================================
+   SKIN — Swiss editorial + néobrutalisme maîtrisé (papier + rouge #E4002B)
+   Prime sur les règles héritées du thème sombre.
+   ============================================================ */
+
+/* Fond papier propre : on neutralise les halos/grilles pensés pour le sombre */
+.page-bg { background: var(--bg) !important; }
+.page-bg::before,
+.page-bg::after { display: none !important; content: none !important; }
+
+/* Angles vifs partout */
+.section, footer.section, .timeline-item, .project-card, .detail-card,
+.hero-photo-card, .hero-photo-frame, .btn, .filter-btn, .skill-chip, .meta-chip,
+.profile-focus-chip, .interest-tag, .item-toggle, .top-nav, .menu a,
+.availability-item, .project-card__preview, .profile-summary-item, .approach-pillar,
+.detail-close, .contact-bar, .filters, .projects-viewer, .projects-viewer__nav,
+.projects-viewer__dot, .filter-btn__count, .project-card__tags li {
+  border-radius: 0 !important;
+}
+
+/* Cartes / panneaux : blanc, bordure encre épaisse, ombre dure décalée */
+.section, footer.section, .project-card, .detail-card, .projects-viewer {
+  background: var(--surface) !important;
+  border: 2px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+/* Timeline : chaque expérience = carte brutaliste (via ::after) */
+.timeline-item::after {
+  background: var(--surface) !important;
+  border: 2px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+}
+.timeline-item:hover::after,
+.timeline-item:focus-within::after,
+.timeline-item.is-active::after,
+.timeline-item.open::after {
+  border-color: var(--primary) !important;
+  box-shadow: 8px 8px 0 var(--primary) !important;
+  background: var(--surface) !important;
+}
+
+/* Sous-cartes internes : blanc + bordure encre (sans ombre pour ne pas surcharger) */
+.approach-pillar, .profile-summary-item, .availability-item, .project-card__preview {
+  background: var(--surface) !important;
+  border: 2px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+/* Boutons */
+.btn {
+  border: 2px solid var(--border) !important;
+  box-shadow: var(--shadow-soft) !important;
+  font-weight: 700 !important;
+}
+.btn.primary { background: var(--primary) !important; color: #fff !important; }
+.btn.secondary { background: var(--surface) !important; color: var(--text) !important; }
+.btn:hover { transform: translate(-2px, -2px) !important; box-shadow: 6px 6px 0 #111111 !important; }
+.btn:active { transform: translate(0, 0) !important; box-shadow: 2px 2px 0 #111111 !important; }
+
+/* Chips / tags / filtres : rectangulaires, bordure encre, fond blanc */
+.skill-chip, .filter-btn, .meta-chip, .profile-focus-chip, .interest-tag,
+.project-card__tags li {
+  background: var(--surface) !important;
+  border: 2px solid var(--border) !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+.skill-chip.active, .filter-btn.active {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-color: var(--border) !important;
+}
+.skill-chip:hover, .filter-btn:hover, .meta-chip:hover {
+  background: var(--chip-bg-hover) !important;
+}
+
+/* Header : barre blanche, bordure encre, ombre dure */
+.top-nav {
+  background: var(--surface) !important;
+  border: 2px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  backdrop-filter: none !important;
+}
+.top-nav.scrolled { background: var(--surface) !important; }
+.menu a { color: var(--text-muted) !important; border: 0 !important; background: transparent !important; }
+.menu a:hover,
+.menu a[aria-current="page"] {
+  color: var(--primary) !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-weight: 700 !important;
+}
+
+/* Modale détail : voile sombre + carte papier */
+.detail-page { background: rgba(17, 17, 17, 0.5) !important; }
+.detail-card { background: var(--surface) !important; }
+
+/* Titres : grotesque fort */
+h1 { font-weight: 800 !important; }
+.bento-card .section-head h2 { font-weight: 800 !important; }
+
+/* Filet gauche des sous-cartes / colonnes en rouge accent */
+.profile-summary-label { border-bottom-color: var(--accent-line-soft) !important; }
