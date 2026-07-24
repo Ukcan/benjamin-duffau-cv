@@ -9,11 +9,7 @@ const cursorInteractiveSelector = [
   "a",
   "button",
   "[role='button']",
-  ".interactive-item",
-  ".project-card",
   ".timeline-item",
-  ".filter-btn",
-  ".skill-chip",
   ".contact-link",
   ".btn"
 ].join(", ");
@@ -88,12 +84,17 @@ function closeMenu() {
   if (!menu || !menuToggle) return;
   menu.classList.remove("open");
   menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.setAttribute("aria-label", "Ouvrir le menu");
 }
 
 if (menuToggle && menu) {
   menuToggle.addEventListener("click", () => {
     const isOpen = menu.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+    if (isOpen) {
+      menu.querySelector("a")?.focus();
+    }
   });
 
   menuLinks.forEach((link) => {
@@ -109,8 +110,9 @@ if (menuToggle && menu) {
   });
 
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && menu.classList.contains("open")) {
       closeMenu();
+      menuToggle.focus();
     }
   });
 
@@ -251,219 +253,6 @@ if (timelineItems.length) {
   updateExperienceTimelineProgress();
 }
 
-const projectSection = document.getElementById("projets");
-const filterButtons = projectSection ? projectSection.querySelectorAll(".filter-btn") : [];
-const skillChips = document.querySelectorAll(".skill-chip");
-const projectCards = projectSection ? projectSection.querySelectorAll(".project-card") : [];
-const filterStatus = document.getElementById("filter-status");
-const projectPrevButton = document.getElementById("projects-prev");
-const projectNextButton = document.getElementById("projects-next");
-const projectPosition = document.getElementById("projects-position");
-const projectPagination = document.getElementById("projects-pagination");
-let activeSkillChip = null;
-let currentProjectIndex = 0;
-const filterLabels = {
-  all: "Toutes",
-  ux: "UX",
-  ui: "UI",
-  ecommerce: "E-commerce"
-};
-
-function getProjectTags(card) {
-  return (card.dataset.tags || "")
-    .split(/\s+/)
-    .map((tag) => tag.trim())
-    .filter(Boolean);
-}
-
-function updateProjectCounts() {
-  const counts = {
-    all: projectCards.length,
-    ux: 0,
-    ui: 0,
-    ecommerce: 0
-  };
-
-  projectCards.forEach((card) => {
-    getProjectTags(card).forEach((tag) => {
-      if (!(tag in counts)) {
-        counts[tag] = 0;
-      }
-
-      counts[tag] += 1;
-    });
-  });
-
-  filterButtons.forEach((btn) => {
-    const filter = btn.dataset.filter || "all";
-    const countSlot = btn.querySelector(`[data-count-for="${filter}"]`);
-    if (countSlot) {
-      countSlot.textContent = String(counts[filter] || 0);
-    }
-  });
-}
-
-function getMatchedProjectCards() {
-  return [...projectCards].filter((card) => card.dataset.filterMatch === "true");
-}
-
-function renderProjectViewer(matchedCards) {
-  const cards = matchedCards || getMatchedProjectCards();
-  const total = cards.length;
-
-  if (total === 0) {
-    projectCards.forEach((card) => {
-      card.classList.remove("is-current");
-      card.hidden = true;
-      card.setAttribute("aria-hidden", "true");
-      card.setAttribute("tabindex", "-1");
-    });
-
-    if (projectPosition) {
-      projectPosition.textContent = "0 / 0";
-    }
-
-    if (projectPagination) {
-      projectPagination.innerHTML = "";
-    }
-
-    if (projectPrevButton) projectPrevButton.disabled = true;
-    if (projectNextButton) projectNextButton.disabled = true;
-    return;
-  }
-
-  if (currentProjectIndex > total - 1) {
-    currentProjectIndex = 0;
-  }
-
-  projectCards.forEach((card) => {
-    const matchedIndex = cards.indexOf(card);
-    const isCurrent = matchedIndex === currentProjectIndex;
-    const isVisible = matchedIndex !== -1 && isCurrent;
-
-    card.classList.toggle("is-current", isVisible);
-    card.hidden = !isVisible;
-    card.setAttribute("aria-hidden", String(!isVisible));
-    card.setAttribute("tabindex", isVisible ? "0" : "-1");
-  });
-
-  if (projectPosition) {
-    projectPosition.textContent = `${currentProjectIndex + 1} / ${total}`;
-  }
-
-  if (projectPagination) {
-    projectPagination.innerHTML = "";
-
-    cards.forEach((card, index) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "projects-viewer__dot";
-      if (index === currentProjectIndex) {
-        dot.classList.add("is-active");
-      }
-
-      dot.setAttribute("aria-label", `Afficher ${card.dataset.detailTitle || `la réalisation ${index + 1}`}`);
-      dot.setAttribute("aria-pressed", String(index === currentProjectIndex));
-      dot.addEventListener("click", () => {
-        currentProjectIndex = index;
-        renderProjectViewer(cards);
-      });
-
-      projectPagination.append(dot);
-    });
-  }
-
-  if (projectPrevButton) {
-    projectPrevButton.disabled = total <= 1;
-  }
-
-  if (projectNextButton) {
-    projectNextButton.disabled = total <= 1;
-  }
-}
-
-function setFilter(filter, sourceChip = null) {
-  const safeFilter = filterLabels[filter] ? filter : "all";
-  let visibleCount = 0;
-  const matchedCards = [];
-
-  projectCards.forEach((card) => {
-    const tags = getProjectTags(card);
-    const visible = safeFilter === "all" || tags.includes(safeFilter);
-
-    card.classList.toggle("hidden", !visible);
-    card.dataset.filterMatch = String(visible);
-
-    if (visible) {
-      visibleCount += 1;
-      matchedCards.push(card);
-    }
-  });
-
-  filterButtons.forEach((btn) => {
-    const active = btn.dataset.filter === safeFilter;
-    btn.classList.toggle("active", active);
-    btn.setAttribute("aria-pressed", String(active));
-  });
-
-  skillChips.forEach((chip) => {
-    const active = chip === sourceChip;
-    chip.classList.toggle("active", active);
-    chip.setAttribute("aria-pressed", String(active));
-  });
-
-  activeSkillChip = sourceChip;
-
-  if (filterStatus) {
-    const label = filterLabels[safeFilter] || filterLabels.all;
-    const projectLabel = visibleCount > 1 ? "projets" : "projet";
-    filterStatus.textContent = `${visibleCount} ${projectLabel} affich${visibleCount > 1 ? "es" : "e"} · ${label}`;
-  }
-
-  if (projectSection) {
-    projectSection.dataset.activeFilter = safeFilter;
-  }
-
-  currentProjectIndex = 0;
-  renderProjectViewer(matchedCards);
-}
-
-filterButtons.forEach((btn) => {
-  btn.setAttribute("aria-pressed", String(btn.classList.contains("active")));
-  btn.addEventListener("click", () => setFilter(btn.dataset.filter || "all", null));
-});
-
-skillChips.forEach((chip) => {
-  chip.setAttribute("aria-pressed", "false");
-  chip.addEventListener("click", () => {
-    const shouldClear = activeSkillChip === chip;
-    setFilter(chip.dataset.filter || "all", shouldClear ? null : chip);
-  });
-});
-
-if (projectPrevButton) {
-  projectPrevButton.addEventListener("click", () => {
-    const cards = getMatchedProjectCards();
-    if (cards.length <= 1) return;
-
-    currentProjectIndex = (currentProjectIndex - 1 + cards.length) % cards.length;
-    renderProjectViewer(cards);
-  });
-}
-
-if (projectNextButton) {
-  projectNextButton.addEventListener("click", () => {
-    const cards = getMatchedProjectCards();
-    if (cards.length <= 1) return;
-
-    currentProjectIndex = (currentProjectIndex + 1) % cards.length;
-    renderProjectViewer(cards);
-  });
-}
-
-updateProjectCounts();
-setFilter("all", null);
-
 const revealTargets = document.querySelectorAll(".reveal");
 
 function setVisibleIfInViewport(el) {
@@ -497,7 +286,7 @@ if ("IntersectionObserver" in window) {
 const sections = document.querySelectorAll("main section, footer.section");
 const topNav = document.querySelector(".top-nav");
 
-const navOrder = ["profil", "competences", "experience", "projets", "formations", "contact"];
+const navOrder = ["profil", "experience", "formations", "contact"];
 
 function updateActiveMenu() {
   const point = window.scrollY + 160;
@@ -577,145 +366,7 @@ window.addEventListener(
   { passive: true }
 );
 
-const detailPage = document.getElementById("detail-page");
-const detailCard = document.querySelector(".detail-card");
-const detailKicker = document.getElementById("detail-kicker");
-const detailTitle = document.getElementById("detail-title");
-const detailBody = document.getElementById("detail-body");
-const detailCloseBtn = document.getElementById("detail-close");
-const detailSlots = document.getElementById("detail-slots");
-const detailSlotFields = {
-  context: document.getElementById("detail-context"),
-  role: document.getElementById("detail-role"),
-  objectives: document.getElementById("detail-objectives"),
-  deliverables: document.getElementById("detail-deliverables"),
-  tools: document.getElementById("detail-tools"),
-  impact: document.getElementById("detail-impact")
-};
-const detailCloseTriggers = document.querySelectorAll("[data-close-detail]");
-const interactiveItems = document.querySelectorAll(".interactive-item[data-detail-title]");
-
-let lastFocusedElement = null;
 let timelineOpenSnapshot = [];
-
-function setDetailGlowPosition(x, y, strength = 0.2) {
-  if (!detailCard) return;
-  detailCard.style.setProperty("--detail-glow-x", `${x}%`);
-  detailCard.style.setProperty("--detail-glow-y", `${y}%`);
-  detailCard.style.setProperty("--detail-glow-strength", String(strength));
-}
-
-function setDetailFieldContent(field, key, value) {
-  if (!field) return;
-
-  if (key === "tools") {
-    field.textContent = "";
-    field.classList.add("detail-tools-list");
-
-    const tools = value
-      .split(",")
-      .map((item) => item.trim())
-      .filter(Boolean);
-
-    if (!tools.length) return;
-
-    tools.forEach((tool) => {
-      const chip = document.createElement("span");
-      chip.className = "detail-chip";
-      chip.textContent = tool;
-      field.appendChild(chip);
-    });
-    return;
-  }
-
-  field.classList.remove("detail-tools-list");
-  field.textContent = value;
-}
-
-function isControlClick(target, item) {
-  const control = target.closest("a, button, .filter-btn, .skill-chip, .item-toggle, [data-close-detail], .menu-toggle");
-  if (!control) return false;
-
-  const isDetailButton = control.classList.contains("interactive-item") && control.hasAttribute("data-detail-title");
-  if (isDetailButton && control === item) return false;
-
-  return true;
-}
-
-function openDetail(item) {
-  if (!detailPage || !detailTitle || !detailBody || !detailCard) return;
-
-  const opensAsSheet = Boolean(item.closest("#formations") || item.closest("#projets"));
-
-  detailKicker.textContent = item.dataset.detailKicker || "Détail";
-  detailTitle.textContent = item.dataset.detailTitle || "Élément";
-  detailBody.textContent = item.dataset.detailBody || "Aucun détail disponible.";
-
-  const detailEntries = [
-    ["context", item.dataset.detailContext],
-    ["role", item.dataset.detailRole],
-    ["objectives", item.dataset.detailObjectives],
-    ["deliverables", item.dataset.detailDeliverables],
-    ["tools", item.dataset.detailTools],
-    ["impact", item.dataset.detailImpact]
-  ];
-
-  let hasDetailSlot = false;
-  detailEntries.forEach(([key, value]) => {
-    const field = detailSlotFields[key];
-    const wrapper = document.getElementById(`detail-slot-${key}-wrap`);
-    if (!field || !wrapper) return;
-
-    if (value) {
-      setDetailFieldContent(field, key, value);
-      wrapper.hidden = false;
-      hasDetailSlot = true;
-    } else {
-      field.textContent = "";
-      field.classList.remove("detail-tools-list");
-      wrapper.hidden = true;
-    }
-  });
-
-  if (detailSlots) {
-    detailSlots.hidden = !hasDetailSlot;
-  }
-
-  detailPage.classList.toggle("mode-sheet", opensAsSheet);
-  if (detailCloseBtn) {
-    detailCloseBtn.setAttribute(
-      "aria-label",
-      opensAsSheet ? "Fermer le volet de détail" : "Fermer la fiche détail"
-    );
-  }
-
-  lastFocusedElement = document.activeElement;
-  detailPage.classList.add("open");
-  detailPage.setAttribute("aria-hidden", "false");
-  document.body.classList.add("detail-open");
-  detailCard.scrollTop = 0;
-  setDetailGlowPosition(74, 18, 0.2);
-
-  if (detailCloseBtn) {
-    detailCloseBtn.focus();
-  } else {
-    detailCard.focus();
-  }
-}
-
-function closeDetail() {
-  if (!detailPage) return;
-
-  detailPage.classList.remove("open");
-  detailPage.classList.remove("mode-sheet");
-  detailPage.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("detail-open");
-  setDetailGlowPosition(74, 18, 0.2);
-
-  if (lastFocusedElement instanceof HTMLElement) {
-    lastFocusedElement.focus();
-  }
-}
 
 function prepareForPrint() {
   if (!timelineOpenSnapshot.length) {
@@ -725,7 +376,6 @@ function prepareForPrint() {
     });
   }
 
-  closeDetail();
   closeMenu();
 
   timelineToggles.forEach((button) => {
@@ -780,75 +430,8 @@ if (copyBtn) {
   });
 }
 
-interactiveItems.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    if (isControlClick(event.target, item)) return;
-    if (item.classList.contains("hidden")) return;
-    openDetail(item);
-  });
-
-  item.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter" && event.key !== " ") return;
-    if (event.target.closest("button, a")) return;
-
-    event.preventDefault();
-    if (item.classList.contains("hidden")) return;
-    openDetail(item);
-  });
-});
-
-detailCloseTriggers.forEach((trigger) => {
-  trigger.addEventListener("click", closeDetail);
-});
-
-if (detailCard) {
-  detailCard.addEventListener("pointermove", (event) => {
-    if (!detailPage?.classList.contains("open")) return;
-    if (!detailPage.classList.contains("mode-sheet")) return;
-
-    const rect = detailCard.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    setDetailGlowPosition(x, y, 0.28);
-  });
-
-  detailCard.addEventListener("pointerleave", () => {
-    if (!detailPage?.classList.contains("mode-sheet")) return;
-    setDetailGlowPosition(74, 18, 0.2);
-  });
-}
-
-window.addEventListener("keydown", (event) => {
-  if (!detailPage || !detailPage.classList.contains("open")) return;
-
-  if (event.key === "Escape") {
-    closeDetail();
-    return;
-  }
-
-  if (event.key !== "Tab") return;
-
-  const focusable = detailPage.querySelectorAll(
-    "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])"
-  );
-
-  if (!focusable.length) return;
-
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-
-  if (event.shiftKey && document.activeElement === first) {
-    event.preventDefault();
-    last.focus();
-  } else if (!event.shiftKey && document.activeElement === last) {
-    event.preventDefault();
-    first.focus();
-  }
-});
-
 updateActiveMenu();
 updateProgress();
-setFilter("all", null);
 initCustomCursor();
 
 

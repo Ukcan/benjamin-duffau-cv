@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#101114"/>
-  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#d2d0c7" stroke-opacity="0.7" stroke-width="2"/>
-  <circle cx="50" cy="14" r="5" fill="#dedcd3" fill-opacity="0.22"/>
-  <text x="32" y="43" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="30" fill="#d2d0c7" letter-spacing="-1">BD</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Benjamin Duffau">
+  <rect x="8" y="8" width="53" height="53" fill="#111111"/>
+  <rect x="3" y="3" width="53" height="53" fill="#f7f5f0" stroke="#111111" stroke-width="3"/>
+  <rect x="8" y="8" width="8" height="43" fill="#e4002b"/>
+  <path fill="#111111" fill-rule="evenodd" d="M21 11h14c8.6 0 13.5 4.2 13.5 11.4 0 4.5-2.1 7.8-6.1 9.8 5 1.8 7.6 5.6 7.6 10.9C50 51.1 44.5 55 35.2 55H21V11Zm8 7v11h5.2c4.2 0 6.3-1.9 6.3-5.6 0-3.6-2.1-5.4-6.3-5.4H29Zm0 18v12h5.8c4.8 0 7.2-2 7.2-6 0-4-2.4-6-7.2-6H29Z"/>
 </svg>
