@@ -6436,6 +6436,35 @@ button:focus-visible,
   transform: translateY(0.2rem);
 }
 
+.profile-summary__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+
+.profile-summary__cta .profile-summary__link {
+  margin-top: 0;
+}
+
+.profile-summary__portfolio {
+  gap: 0.5rem;
+}
+
+.profile-summary__portfolio-arrow {
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+.profile-summary__portfolio-note {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  max-width: 40ch;
+}
+
 @media (max-width: 1100px) {
   .cv-layout {
     grid-template-columns: 16.75rem minmax(0, 1fr);
