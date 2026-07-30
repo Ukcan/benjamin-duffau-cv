@@ -6,7 +6,10 @@
   <title>UX/UI DESIGNER | Benjamin DUFFAU</title>
   <meta name="description" content="CV interactif de Benjamin DUFFAU, UX/UI DESIGNER entre Bordeaux et Nice.">
   <link rel="canonical" href="https://ukcan.github.io/benjamin-duffau-cv/">
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260723cv2">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png?v=20260724bd">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png?v=20260724bd">
+  <link rel="shortcut icon" href="./favicon.ico?v=20260724bd">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=20260724bd">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Benjamin Duffau — UX/UI DESIGNER">
   <meta property="og:description" content="Parcours, design systems et décisions design alignées avec les enjeux business. Bordeaux · Nice · À distance.">
@@ -24,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260723cv13">
+  <link rel="stylesheet" href="./styles.css?v=20260728cv31">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,78 +52,166 @@
   </script>
 </head>
 <body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-location" viewBox="0 0 24 24">
+      <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"></path>
+      <circle cx="12" cy="12" r="3"></circle>
+      <path d="M12 7v2M12 15v2M7 12h2M15 12h2"></path>
+    </symbol>
+    <symbol id="icon-email" viewBox="0 0 24 24">
+      <path d="M3 6h18v12H3z"></path>
+      <path d="m4 7 8 6 8-6M3 18l6-7M21 18l-6-7"></path>
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path d="M7 3h4l1 5-3 2c1 2.5 2.5 4 5 5l2-3 5 1v4c0 2-1.5 3-3.5 3C9.5 19 5 14.5 4 6.5 4 4.5 5 3 7 3z"></path>
+      <path d="M16 4h4v4M15 9l5-5"></path>
+    </symbol>
+    <symbol id="icon-profile" viewBox="0 0 24 24">
+      <path d="M3 4h18v16H3z"></path>
+      <circle cx="8" cy="9" r="2"></circle>
+      <path d="M5 16c.5-2.5 2-4 4.5-4S13 13.5 13 16M15 8h3M15 11h3M15 14h3"></path>
+    </symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24">
+      <path d="M3 4h18v13H9l-6 4z"></path>
+      <path d="M7 9h10M7 12h7"></path>
+    </symbol>
+    <symbol id="icon-document" viewBox="0 0 24 24">
+      <path d="M5 3h10l4 4v14H5zM15 3v5h5"></path>
+      <path d="M12 11v7M9 15l3 3 3-3"></path>
+    </symbol>
+    <symbol id="icon-audit" viewBox="0 0 24 24">
+      <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6S2 12 2 12z"></path>
+      <circle cx="12" cy="12" r="3"></circle>
+      <path d="M12 7v2M12 15v2M7 12h2M15 12h2"></path>
+    </symbol>
+    <symbol id="icon-interface" viewBox="0 0 24 24">
+      <path d="M3 4h18v16H3zM3 9h18M9 9v11"></path>
+      <path d="M6 6h1M10 6h1M12 13h6M12 16h4"></path>
+    </symbol>
+    <symbol id="icon-handoff" viewBox="0 0 24 24">
+      <path d="M3 8h13M13 5l3 3-3 3M21 16H8M11 13l-3 3 3 3"></path>
+    </symbol>
+    <symbol id="icon-down" viewBox="0 0 24 24">
+      <path d="M12 3v15M7 13l5 5 5-5M6 21h12"></path>
+    </symbol>
+  </svg>
+
   <a class="skip-link" href="#content">Aller au contenu principal</a>
 
   <div class="page-bg" aria-hidden="true"></div>
   <div class="scroll-progress" aria-hidden="true"></div>
 
-  <header class="hero" id="top">
-    <nav class="top-nav" aria-label="Navigation principale">
-      <a href="#top" class="brand">Benjamin DUFFAU</a>
-      <ul class="menu" id="primary-menu">
-        <li><a href="#profil">Expertises</a></li>
-        <li><a href="#experience">Expérience</a></li>
-        <li><a href="#formations">Formations</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="top-nav-actions">
-        <a class="btn primary nav-contact-cta" href="mailto:bd33000@gmail.com?subject=Prise%20de%20contact%20-%20Benjamin%20Duffau">Contactez moi</a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Ouvrir le menu">Menu</button>
+  <div class="cv-layout">
+    <aside class="cv-sidebar" id="top" aria-label="Identité et coordonnées">
+      <div class="cv-sidebar__panel">
+        <nav class="top-nav" aria-label="Navigation principale">
+          <div class="cv-sidebar__mobilebar">
+            <a href="#top" class="brand">Benjamin DUFFAU</a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Ouvrir le menu">Menu</button>
+          </div>
+          <p class="cv-sidebar__nav-label">Parcourir le CV</p>
+          <ul class="menu" id="primary-menu">
+            <li><a href="#profil"><span aria-hidden="true">01</span>Compétences</a></li>
+            <li><a href="#experience"><span aria-hidden="true">02</span>Expérience</a></li>
+            <li><a href="#formations"><span aria-hidden="true">03</span>Formations</a></li>
+          </ul>
+        </nav>
+
+        <figure class="cv-sidebar__portrait">
+          <img src="./assets/portrait.webp" alt="Portrait de Benjamin Duffau">
+        </figure>
+
+        <div class="cv-sidebar__identity">
+          <p class="cv-sidebar__name">Benjamin DUFFAU</p>
+          <p>Audit UX · parcours utilisateurs · interfaces web et mobile · design systems.</p>
+        </div>
+
+        <p class="cv-sidebar__status">
+          <span aria-hidden="true"></span>
+          Disponible · CDI · Freelance
+        </p>
+
+        <address class="cv-sidebar__contact">
+          <div>
+            <svg class="ui-icon ui-icon--meta" aria-hidden="true"><use href="#icon-location"></use></svg>
+            <span>Zone</span>
+            <p>Nice · À distance</p>
+          </div>
+          <div>
+            <svg class="ui-icon ui-icon--meta" aria-hidden="true"><use href="#icon-email"></use></svg>
+            <span>Email</span>
+            <a href="mailto:bd33000@gmail.com">bd33000@gmail.com</a>
+          </div>
+          <div>
+            <svg class="ui-icon ui-icon--meta" aria-hidden="true"><use href="#icon-phone"></use></svg>
+            <span>Téléphone</span>
+            <a href="tel:+33630699273">06 30 69 92 73</a>
+          </div>
+          <div>
+            <svg class="ui-icon ui-icon--meta" aria-hidden="true"><use href="#icon-profile"></use></svg>
+            <span>Profil</span>
+            <a href="https://www.linkedin.com/in/benjamin-duffau/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </address>
+
+        <div class="cv-sidebar__actions">
+          <a class="btn primary motion-sheen" href="mailto:bd33000@gmail.com?subject=Prise%20de%20contact%20-%20Benjamin%20Duffau"><svg class="ui-icon ui-icon--action" aria-hidden="true"><use href="#icon-message"></use></svg>Me contacter</a>
+          <a class="btn secondary motion-sheen" href="./assets/cv-benjamin-duffau.pdf?v=20260728-ats5" download="CV-Benjamin-Duffau.pdf"><svg class="ui-icon ui-icon--action" aria-hidden="true"><use href="#icon-document"></use></svg>CV en PDF</a>
+        </div>
       </div>
-    </nav>
-  </header>
+    </aside>
 
   <main id="content" class="bento-main" tabindex="-1">
     <div class="bento-grid">
-    <section class="hero-content reveal bento-card bento-hero-card motion-sequence">
+    <section class="hero-content profile-summary reveal bento-card bento-hero-card motion-sequence" aria-labelledby="profile-summary-title">
       <div class="hero-text">
-        <p class="eyebrow motion-fade-up motion-delay-1">Disponible · CDI · Freelance · Nice / à distance</p>
-        <h1 class="motion-fade-up motion-delay-2 motion-glow-soft">UX/UI DESIGNER</h1>
+        <p class="eyebrow motion-fade-up motion-delay-1">Profil professionnel</p>
+        <h1 id="profile-summary-title" class="profile-summary__title motion-fade-up motion-delay-2">UX/UI DESIGNER</h1>
         <p class="intro motion-fade-up motion-delay-3">
-          Audit UX · parcours utilisateurs · interfaces web et mobile · design systems · coordination design–développement.
+          J’interviens du cadrage et des tests utilisateurs jusqu’aux prototypes, design systems et spécifications.
         </p>
-        <div class="cta-row motion-fade-up motion-delay-5">
-          <a class="btn primary motion-sheen" href="#experience">Voir l’expérience</a>
-          <a class="btn secondary motion-sheen" href="./assets/cv-benjamin-duffau.pdf" download="CV-Benjamin-Duffau.pdf">Télécharger le CV (PDF)</a>
-        </div>
+        <ul class="profile-summary__facts motion-fade-up motion-delay-4" aria-label="Repères professionnels">
+          <li><svg class="ui-icon ui-icon--fact" aria-hidden="true"><use href="#icon-audit"></use></svg>Audit et tests utilisateurs</li>
+          <li><svg class="ui-icon ui-icon--fact" aria-hidden="true"><use href="#icon-interface"></use></svg>Interfaces web, mobile et VR</li>
+          <li><svg class="ui-icon ui-icon--fact" aria-hidden="true"><use href="#icon-handoff"></use></svg>Handoff React / TypeScript</li>
+        </ul>
+        <a class="btn secondary profile-summary__link motion-fade-up motion-delay-5" href="#experience">Voir les expériences <svg class="ui-icon ui-icon--link" aria-hidden="true"><use href="#icon-down"></use></svg></a>
       </div>
-      <figure class="hero-photo-card motion-fade-up motion-delay-4 motion-float-soft" aria-label="Portrait de Benjamin Duffau">
-        <div class="hero-photo-frame">
-          <div class="hero-photo-visual hero-photo-image" style="background-image: url('./assets/portrait.webp');">
-          </div>
-        </div>
-        <figcaption>
-          <span>Nice · À distance</span>
-        </figcaption>
-      </figure>
     </section>
 
     <div class="bento-rows">
       <div class="bento-row bento-row--wide">
       <section id="profil" class="section section-open reveal bento-card bento-profil">
       <div class="section-head">
-        <h2 data-index="01">Expertises</h2>
+        <h2 data-index="01">Compétences</h2>
       </div>
           <div class="expertise-list expertise-list--cv" aria-label="Domaines d'expertise">
             <div class="expertise-row expertise-row--static">
               <span class="expertise-row__index" aria-hidden="true">01</span>
               <span class="expertise-row__content">
-                <strong>Recherche et audit UX</strong>
-                <span>Entretiens · tests utilisateurs · analyse des besoins · audit de parcours · accessibilité</span>
+                <strong>Recherche, audit &amp; accessibilité</strong>
+                <span>Entretiens · tests utilisateurs · analyse de parcours · audit heuristique · WCAG 2.2 AA</span>
               </span>
             </div>
             <div class="expertise-row expertise-row--static">
               <span class="expertise-row__index" aria-hidden="true">02</span>
               <span class="expertise-row__content">
-                <strong>Conception UI et design systems</strong>
-                <span>Wireframes · interfaces web et mobile · composants · prototypes</span>
+                <strong>Interfaces &amp; design systems</strong>
+                <span>Architecture de l'information · wireframes · interfaces web, mobile et VR · composants · prototypes</span>
               </span>
             </div>
             <div class="expertise-row expertise-row--static">
               <span class="expertise-row__index" aria-hidden="true">03</span>
               <span class="expertise-row__content">
-                <strong>Produit et coordination</strong>
-                <span>Cadrage produit · coordination design–développement · e-commerce · formation</span>
+                <strong>Produits complexes &amp; multi-supports</strong>
+                <span>Dashboards métier · parcours multi-profils · HUD · interfaces 3D · responsive design</span>
+              </span>
+            </div>
+            <div class="expertise-row expertise-row--static">
+              <span class="expertise-row__index" aria-hidden="true">04</span>
+              <span class="expertise-row__content">
+                <strong>Cadrage, delivery &amp; adoption</strong>
+                <span>Ateliers de cadrage · priorisation · spécifications · handoff React / TypeScript · onboarding · formation</span>
               </span>
             </div>
           </div>
@@ -136,96 +227,91 @@
         <nav class="timeline-nav" id="experience-nav" aria-label="Navigation chronologique"></nav>
         <div class="timeline" id="experience-timeline" aria-label="Liste des expériences">
         <!-- À consolider : préciser pour chaque expérience le contexte, les actions, les livrables et les résultats vérifiables. -->
-        <article id="experience-evogue" class="timeline-item" data-content-status="a-consolider" data-timeline-year="2026" data-timeline-label="Evogue">
+        <article id="experience-evogue" class="timeline-item" data-timeline-year="2026" data-timeline-label="Evogue">
           <span class="timeline-item__year" aria-hidden="true">2026</span>
           <button class="item-toggle" type="button" aria-expanded="false">
             <span class="timeline-item__title">Formateur Design - Evogue</span>
             <span class="timeline-item__period">2026</span>
           </button>
           <div class="item-content">
-            <p>Formation et accompagnement design.</p>
+            <p>Préparation d'un programme de formation UX/UI structuré autour de quatre thèmes.</p>
             <ul>
-              <li>Transmission des méthodes UX/UI.</li>
-              <li>Création des supports de cours.</li>
-              <li>Accompagnement projet et revue des pratiques.</li>
+              <li><strong>Fondamentaux UX & ergonomie :</strong> Norman, Nielsen, perception visuelle, comportements utilisateurs, critères d'évaluation, facteurs de succès, apports et enjeux éthiques de l'IA ; étude comparative de sites.</li>
+              <li><strong>Conception & optimisation de l'interface :</strong> tendances graphiques, accessibilité WCAG, couleurs, typographie, iconographie, interactions, composition, contenu, SEO et outils de conception par IA ; audit rapide d'accessibilité.</li>
+              <li><strong>Interactions & méthodes UX :</strong> navigation, architecture de l'information, design system, rédaction UX, design centré utilisateur, personas, parcours et scénarios ; atelier de création d'un persona.</li>
+              <li><strong>Outils, optimisation & veille :</strong> prototypage, tests utilisateurs, recherche qualitative et quantitative, A/B testing, tri de cartes, audit ergonomique, KPIs, outils d'analyse par IA et tendances émergentes ; étude d'un processus d'A/B testing assisté par IA.</li>
             </ul>
           </div>
         </article>
 
-        <article id="experience-kcs" class="timeline-item" data-content-status="a-consolider" data-timeline-year="2024" data-timeline-label="KCS">
+        <article id="experience-kcs" class="timeline-item" data-timeline-year="2024" data-timeline-label="KCS">
           <span class="timeline-item__year" aria-hidden="true">2024</span>
           <button class="item-toggle" type="button" aria-expanded="false">
             <span class="timeline-item__title">Lead Designer - Karma Com Solidarité</span>
             <span class="timeline-item__period">2024 - aujourd'hui</span>
           </button>
           <div class="item-content">
-            <p>Pilotage design et coordination produit.</p>
+            <p>Structuration de l'écosystème numérique KCS, du cadrage des parcours au handoff des interfaces.</p>
             <ul>
-              <li>Structuration des processus UX/UI.</li>
-              <li>Alignement équipe et priorisation des besoins.</li>
+              <li><strong>Référent du pôle design :</strong> coordination du pôle, point de contact et accompagnement des designers de l'association.</li>
+              <li><strong>Audit & parcours :</strong> audit heuristique et WCAG 2.2 AA ; onboarding bénévole ramené de 8 à 4 étapes dans le prototype.</li>
+              <li><strong>Produit :</strong> conception du KCS Hub, du site public aux parcours multi-profils et tableaux de bord métiers.</li>
+              <li><strong>Design system :</strong> création et gouvernance des tokens, composants, états et règles d'usage.</li>
+              <li><strong>Design graphique & communication :</strong> conception de visuels pour les réseaux sociaux, brochures, guides et autres supports de communication, avec déclinaisons numériques et print.</li>
+              <li><strong>Delivery :</strong> prototypes, spécifications de composants et handoff React / TypeScript.</li>
             </ul>
           </div>
         </article>
 
-        <article id="experience-practeex" class="timeline-item" data-content-status="a-consolider" data-timeline-year="2020" data-timeline-label="PRACTEEX">
+        <article id="experience-practeex" class="timeline-item" data-timeline-year="2020" data-timeline-label="PRACTEEX">
           <span class="timeline-item__year" aria-hidden="true">2020</span>
           <button class="item-toggle" type="button" aria-expanded="false">
             <span class="timeline-item__title">UX / UI - PRACTEEX · Freelance</span>
             <span class="timeline-item__period">mai 2020 - aujourd'hui</span>
           </button>
           <div class="item-content">
-            <p>Bordeaux, Nouvelle-Aquitaine, France.</p>
+            <p>Seul designer UX/UI du projet, en charge du serious game de l'audit des parcours au handoff des interfaces.</p>
             <ul>
-              <li>Conception de maquettes VR.</li>
-              <li>Audit expert de serious game.</li>
-              <li>Travail d'équipe, coordination, gestion de projet et A/B testing.</li>
+              <li><strong>UX & tests :</strong> audit expert, parcours enseignants et élèves, tests utilisateurs et itérations.</li>
+              <li><strong>Interface de jeu :</strong> conception du HUD et des interactions pour la VR et plusieurs supports.</li>
+              <li><strong>Hub enseignants :</strong> dashboard de lancement et de paramétrage des sessions.</li>
+              <li><strong>Espace élèves :</strong> dashboard dédié, articulé avec le parcours de jeu.</li>
+              <li><strong>Accessibilité & delivery :</strong> prototypes, spécifications et handoff aux équipes de développement.</li>
             </ul>
           </div>
         </article>
 
-        <article id="experience-universite-bordeaux" class="timeline-item" data-content-status="a-consolider" data-timeline-year="2020" data-timeline-label="Université">
+        <article id="experience-universite-bordeaux" class="timeline-item" data-timeline-year="2020" data-timeline-label="Université">
           <span class="timeline-item__year" aria-hidden="true">2020</span>
           <button class="item-toggle" type="button" aria-expanded="false">
             <span class="timeline-item__title">Designer d'expérience utilisateur - Université de Bordeaux · Freelance</span>
             <span class="timeline-item__period">Sept 2020 - Janv 2024</span>
           </button>
           <div class="item-content">
-            <p>Bordeaux, Nouvelle-Aquitaine, France · Hybride.</p>
+            <p>Conception d'une application de quiz universitaire destinée aux étudiants et aux enseignants, utilisable en cours ou à distance.</p>
             <ul>
-              <li>Wireframing et structuration de parcours.</li>
-              <li>Conception d'expérience utilisateur orientée usage et clarté.</li>
-              <li>Prise en compte des besoins et contraintes des étudiants, des professeurs et de l'académie.</li>
-              <li>A/B testing pour affiner les parcours et améliorer la clarté des interfaces.</li>
+              <li><strong>Cadrage produit :</strong> réunions avec les parties prenantes, recueil des besoins des étudiants, enseignants et équipes académiques, définition du périmètre.</li>
+              <li><strong>Parcours & wireframes :</strong> architecture des parcours, wireframes et clarification des interactions.</li>
+              <li><strong>Expérience quiz :</strong> vidéo, réponses à choix multiples, visionneuse 3D et seuils de réussite.</li>
+              <li><strong>Tests & optimisation :</strong> tests utilisateurs, A/B testing et itérations pour améliorer la compréhension et la clarté des interfaces.</li>
             </ul>
           </div>
         </article>
 
-        <article id="experience-akiani" class="timeline-item" data-content-status="a-consolider" data-timeline-year="2018" data-timeline-label="Akiani / DC">
-          <span class="timeline-item__year" aria-hidden="true">2018</span>
-          <button class="item-toggle" type="button" aria-expanded="false">
-            <span class="timeline-item__title">Formation UX/UI design - Akiani / DC</span>
-            <span class="timeline-item__period">déc. 2018 - juil. 2020</span>
-          </button>
-          <div class="item-content">
-            <p>Digital Campus Bordeaux - Région de Bordeaux, France.</p>
-            <ul>
-              <li>Prototypages interactifs.</li>
-              <li>Wireframes et méthodes UX/UI.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article id="experience-click-and-shopp" class="timeline-item" data-content-status="a-consolider" data-timeline-year="2014" data-timeline-label="Click & Shopp">
+        <article id="experience-click-and-shopp" class="timeline-item" data-timeline-year="2014" data-timeline-label="Click & Shopp">
           <span class="timeline-item__year" aria-hidden="true">2014</span>
           <button class="item-toggle" type="button" aria-expanded="false">
             <span class="timeline-item__title">Gérant - CLICK AND SHOPP (Temps plein)</span>
             <span class="timeline-item__period">avr. 2014 - déc. 2018</span>
           </button>
           <div class="item-content">
-            <p>Gestion complète de la plateforme e-commerce.</p>
+            <p>Création et gestion de bout en bout d'un site e-commerce sous PrestaShop, de l'approvisionnement fournisseur à la vente et au suivi client.</p>
             <ul>
-              <li>Développement sous Prestashop et optimisation SEO.</li>
-              <li>UX conversion, stocks et marketing digital.</li>
+              <li><strong>Plateforme & catalogue :</strong> conception, configuration et administration du site ; structuration du catalogue et création des fiches produits.</li>
+              <li><strong>SEO & contenus :</strong> rédaction et optimisation des fiches produits et des catégories pour le référencement naturel.</li>
+              <li><strong>Achats & stocks :</strong> gestion des achats fournisseurs, des approvisionnements et du stock.</li>
+              <li><strong>Vente & relation client :</strong> mise en vente des produits, suivi des commandes, conseil et service client.</li>
+              <li><strong>UX & conversion :</strong> amélioration du parcours d'achat, de la lisibilité des offres et des contenus commerciaux.</li>
             </ul>
           </div>
         </article>
@@ -246,55 +332,19 @@
           <h3>Institut Bernom</h3>
           <p>BTS gestion, management et communication · 2010 — 2012</p>
         </article>
-        <article class="project-card">
-          <h3>OpenClassrooms</h3>
-          <p>Formation continue · UX/UI, web et outils de production</p>
-        </article>
       </div>
     </section>
 
       </div>
     </div>
-      <footer id="contact" class="section section-open reveal bento-card bento-contact">
-      <div class="section-head">
-        <h2 data-index="04">Disponibilité &amp; contact</h2>
-      </div>
-      <div class="contact-merged contact-merged--compact">
-        <div class="availability-grid" aria-label="Cadre d'intervention">
-          <div class="availability-item">
-            <p class="availability-label">Formats</p>
-            <p class="availability-value">CDI, freelance, mission de renfort</p>
-          </div>
-          <div class="availability-item">
-            <p class="availability-label">Zones</p>
-            <p class="availability-value">Nice, à distance</p>
-          </div>
-          <div class="availability-item">
-            <p class="availability-label">Intervention</p>
-            <p class="availability-value">Audit UX, parcours, design system, cadrage produit</p>
-          </div>
-        </div>
-        <div class="contact-bar">
-          <div class="contact-identity">
-            <a class="contact-link" href="mailto:bd33000@gmail.com">bd33000@gmail.com</a>
-            <a class="contact-phone" href="tel:+33630699273">06 30 69 92 73</a>
-            <p class="contact-studio">Studio freelance — <a href="https://claude-pour-figma.benjamin-duffau.workers.dev" target="_blank" rel="noopener noreferrer">Flowdee, audit UX &amp; conversion</a></p>
-          </div>
-          <div class="cta-row">
-            <a class="btn primary motion-sheen" href="mailto:bd33000@gmail.com?subject=Prise%20de%20contact%20-%20Benjamin%20Duffau">Envoyer un email</a>
-            <button id="copy-email" class="btn secondary motion-sheen" type="button" data-email="bd33000@gmail.com">Copier l'email</button>
-            <a class="btn secondary motion-sheen" href="https://www.linkedin.com/in/benjamin-duffau/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-    </footer>
     </div>
   </main>
+  </div>
 
   <div class="cursor-halo" id="cursor-halo" aria-hidden="true"></div>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
 
-  <script src="./script.js?v=20260723cv7"></script>
+  <script src="./script.js?v=20260725cv9"></script>
 </body>
 </html>
 

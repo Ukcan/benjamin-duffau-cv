@@ -123,6 +123,94 @@ if (menuToggle && menu) {
   });
 }
 
+const sectionNavigationLinks = document.querySelectorAll(
+  ".top-nav a[href^='#'], .hero-content a[href^='#']"
+);
+let sectionScrollFrame = 0;
+
+function getSectionScrollTop(target) {
+  if (target.id === "top") return 0;
+
+  const scrollMarginTop = Number.parseFloat(
+    window.getComputedStyle(target).scrollMarginTop
+  ) || 0;
+
+  return Math.max(
+    0,
+    target.getBoundingClientRect().top + window.scrollY - scrollMarginTop
+  );
+}
+
+function navigateToSection(target, hash) {
+  window.cancelAnimationFrame(sectionScrollFrame);
+
+  const startY = window.scrollY;
+  const targetY = getSectionScrollTop(target);
+  const distance = targetY - startY;
+  const duration = Math.min(240, Math.max(140, Math.abs(distance) * 0.09));
+
+  target.classList.add("visible", "navigation-target");
+  window.setTimeout(() => {
+    target.classList.remove("navigation-target");
+  }, duration + 80);
+
+  if (window.location.hash !== hash) {
+    window.history.pushState(null, "", hash);
+  } else {
+    window.history.replaceState(null, "", hash);
+  }
+
+  if (prefersReducedMotion.matches || Math.abs(distance) < 2) {
+    window.scrollTo(0, targetY);
+    updateActiveMenu();
+    updateProgress();
+    return;
+  }
+
+  const startTime = window.performance.now();
+  const easeOutCubic = (progress) => 1 - Math.pow(1 - progress, 3);
+
+  const animate = (currentTime) => {
+    const progress = Math.min(1, (currentTime - startTime) / duration);
+    window.scrollTo(0, startY + distance * easeOutCubic(progress));
+
+    if (progress < 1) {
+      sectionScrollFrame = window.requestAnimationFrame(animate);
+      return;
+    }
+
+    sectionScrollFrame = 0;
+    updateActiveMenu();
+    updateProgress();
+  };
+
+  sectionScrollFrame = window.requestAnimationFrame(animate);
+}
+
+sectionNavigationLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (
+      event.defaultPrevented ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    const hash = link.getAttribute("href");
+    if (!hash || hash === "#") return;
+
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    event.preventDefault();
+    closeMenu();
+    navigateToSection(target, hash);
+  });
+});
+
 const experienceSection = document.getElementById("experience");
 const experienceTimeline = document.getElementById("experience-timeline");
 const timelineNav = document.getElementById("experience-nav");
@@ -286,7 +374,7 @@ if ("IntersectionObserver" in window) {
 const sections = document.querySelectorAll("main section, footer.section");
 const topNav = document.querySelector(".top-nav");
 
-const navOrder = ["profil", "experience", "formations", "contact"];
+const navOrder = ["profil", "experience", "formations"];
 
 function updateActiveMenu() {
   const point = window.scrollY + 160;
@@ -411,24 +499,6 @@ if (printBtn) {
 
 window.addEventListener("beforeprint", prepareForPrint);
 window.addEventListener("afterprint", restoreAfterPrint);
-
-const copyBtn = document.getElementById("copy-email");
-if (copyBtn) {
-  copyBtn.addEventListener("click", async () => {
-    const email = copyBtn.dataset.email || "";
-    if (!email) return;
-
-    try {
-      await navigator.clipboard.writeText(email);
-      copyBtn.textContent = "Email copié";
-      setTimeout(() => {
-        copyBtn.textContent = "Copier l'email";
-      }, 1800);
-    } catch {
-      copyBtn.textContent = "Copie impossible";
-    }
-  });
-}
 
 updateActiveMenu();
 updateProgress();

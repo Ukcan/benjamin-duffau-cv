@@ -1,0 +1,6 @@
+# Scratch / artefacts de build (non déployés)
+output/
+scripts/
+tmp/
+node_modules/
+.DS_Store
