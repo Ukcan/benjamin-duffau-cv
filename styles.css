@@ -6371,10 +6371,11 @@ button:focus-visible,
 .profile-summary__title {
   max-width: 17ch;
   margin: 0;
-  font-family: "Work Sans", "Segoe UI", sans-serif;
+  font-family: "Satoshi", "Segoe UI", sans-serif;
+  font-weight: 700;
   font-size: clamp(2.35rem, 5vw, 4.75rem);
   line-height: 0.98;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
