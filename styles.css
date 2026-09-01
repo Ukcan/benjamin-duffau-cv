@@ -6130,7 +6130,8 @@ button:focus-visible,
 .cv-sidebar__portrait img {
   display: block;
   width: 100%;
-  height: clamp(9.5rem, 17vh, 11.5rem);
+  aspect-ratio: 4 / 5;
+  height: auto;
   object-fit: cover;
   object-position: center 24%;
   filter: saturate(0.88) contrast(1.02);
@@ -6481,10 +6482,6 @@ button:focus-visible,
     top: 0.65rem;
     max-height: calc(100dvh - 1.3rem);
     padding: 0.85rem;
-  }
-
-  .cv-sidebar__portrait img {
-    height: 8.75rem;
   }
 
   .cv-sidebar__identity h1 {
@@ -6981,10 +6978,6 @@ button:focus-visible,
     gap: 0.65rem;
   }
 
-  .cv-sidebar__portrait img {
-    height: 8rem;
-  }
-
   .cv-sidebar__identity h1 {
     font-size: 2.05rem;
   }
@@ -7143,10 +7136,6 @@ button:focus-visible,
 }
 
 @media (min-width: 921px) and (max-width: 1100px) {
-  .cv-sidebar__portrait img {
-    height: 7.6rem;
-  }
-
   .cv-sidebar__identity h1 {
     font-size: 2.15rem;
   }
@@ -7490,14 +7479,12 @@ button:focus-visible,
 
 @media (min-width: 1101px) {
   .cv-sidebar__portrait img {
-    height: clamp(11.75rem, 21vh, 13.75rem);
     object-position: center 20%;
   }
 }
 
 @media (min-width: 921px) and (max-width: 1100px) {
   .cv-sidebar__portrait img {
-    height: 9.5rem;
     object-position: center 20%;
   }
 
