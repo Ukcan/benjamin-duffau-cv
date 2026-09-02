@@ -1046,8 +1046,10 @@ h2 {
   margin-top: 0.35rem;
 }
 
-.timeline-item.open .item-content ul,
-.timeline-item.is-active .item-content ul {
+/* Seul `.open` déplie. `.is-active` ne marque que le poste courant : il
+   partageait cette règle, si bien qu'un poste rendu actif s'ouvrait sans que
+   personne ne l'ait demandé — y compris à l'initialisation. */
+.timeline-item.open .item-content ul {
   max-height: 64rem;
   opacity: 1;
   transform: translateY(0);

@@ -256,12 +256,18 @@ function updateExperienceTimelineProgress() {
 function setActiveTimelineItem(card, options = {}) {
   if (!card) return;
 
-  const { scrollPanel = false } = options;
+  /* `expand` sépare « quel poste est courant » de « quel poste est déplié ».
+     Les deux étaient confondus : marquer un poste actif l'ouvrait forcément,
+     donc l'initialisation au chargement dépliait le premier. Un CV s'ouvre
+     désormais en état neutre, tous les postes fermés (demande Benji,
+     2026-08-20). */
+  const { scrollPanel = false, expand = true } = options;
 
   timelineItems.forEach((item) => {
     const active = item === card;
     item.classList.toggle("is-active", active);
-    setTimelineExpandedState(item, active);
+    if (expand) setTimelineExpandedState(item, active);
+    else setTimelineExpandedState(item, false);
   });
 
   updateTimelineNavState(card);
@@ -333,7 +339,11 @@ timelineItems.forEach((item) => {
 });
 
 if (timelineItems.length) {
-  setActiveTimelineItem(timelineItems[0]);
+  /* Le premier poste est marqué comme courant — pour la frise et sa barre de
+     progression — mais reste FERMÉ. L'impression n'est pas concernée :
+     `prepareForPrint` ouvre tous les postes avant d'imprimer et
+     `restoreAfterPrint` remet l'état d'avant. */
+  setActiveTimelineItem(timelineItems[0], { expand: false });
   if (experienceTimeline) {
     experienceTimeline.addEventListener("scroll", updateExperienceTimelineProgress, { passive: true });
   }
