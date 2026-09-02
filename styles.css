@@ -112,6 +112,14 @@ body.cursor-enhanced .contact-link {
   pointer-events: none;
   opacity: 0;
   transform: translate3d(-50%, -50%, 0);
+  /* ⚠️ AUCUNE transition sur `transform`. Le JS le réécrit à chaque frame pour
+     suivre le pointeur : une transition de 220ms animait donc CHAQUE écriture,
+     et le curseur ne pouvait jamais rattraper la souris. C'était la cause du
+     curseur mou, y compris pour le point censé être exact.
+     Le grossissement au survol passe par la propriété `scale`, indépendante de
+     `transform` : elle peut être animée sans entrer en conflit avec la position
+     écrite en ligne. */
+  will-change: transform;
   transition:
     opacity 0.22s ease,
     width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
@@ -119,7 +127,7 @@ body.cursor-enhanced .contact-link {
     background-color 0.22s ease,
     border-color 0.22s ease,
     box-shadow 0.22s ease,
-    transform 0.22s ease;
+    scale 0.18s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cursor-halo {
@@ -128,7 +136,9 @@ body.cursor-enhanced .contact-link {
   border: 1px solid rgba(216, 216, 212, 0.32);
   border-radius: 999px;
   background: radial-gradient(circle, color-mix(in srgb, var(--focus) 12%, transparent), transparent);
-  backdrop-filter: blur(4px);
+  /* `backdrop-filter: blur(4px)` retiré : il forçait un instantané de
+     l'arrière-plan à chaque frame de déplacement, pour un flou invisible
+     derrière un dégradé à 12 %. C'est la propriété la plus coûteuse à animer. */
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
@@ -153,8 +163,11 @@ body.cursor-hovering .cursor-halo {
   box-shadow: 0 0 34px color-mix(in srgb, var(--primary) 16%, transparent);
 }
 
+/* `scale` et non `transform` : le JS écrit `style.transform` en ligne à chaque
+   frame, et un style en ligne bat la feuille de style. Ces deux états n'ont
+   donc JAMAIS été visibles depuis que le curseur suit le pointeur. */
 body.cursor-hovering .cursor-dot {
-  transform: translate3d(-50%, -50%, 0) scale(1.4);
+  scale: 1.4;
   background: color-mix(in srgb, var(--primary) 32%, white);
 }
 
@@ -164,7 +177,7 @@ body.cursor-pressing .cursor-halo {
 }
 
 body.cursor-pressing .cursor-dot {
-  transform: translate3d(-50%, -50%, 0) scale(0.72);
+  scale: 0.72;
 }
 
 .motion-fade-up,
