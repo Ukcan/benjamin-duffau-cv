@@ -6136,6 +6136,28 @@ button:focus-visible,
 .cv-sidebar__portrait {
   order: 1;
   margin: 0;
+
+  /* ⚠️ `flex-shrink: 0` est LOAD-BEARING. `.cv-sidebar__panel` est un flex en
+     colonne plafonné à `max-height: calc(100dvh - 2rem)`. Sans cette ligne,
+     une fenêtre un peu courte comprimait cette figure pour faire tenir le
+     contenu — et comme elle porte `overflow: hidden`, elle rognait la photo
+     par le bas, en silence.
+
+     Mesuré à 1920x870 avant correction : la figure tombait à 301x246 (paysage,
+     ratio 1.22) alors que l'image gardait sa boîte 300x375, soit 34 % du
+     portrait masqué. Piège de diagnostic : mesurer l'`img` renvoie un ratio
+     4:5 parfait et laisse croire qu'il n'y a aucune coupe. C'est la FIGURE
+     qu'il faut mesurer.
+
+     Le panneau a `overflow-y: auto` précisément pour ce cas : il défile, au
+     lieu que la photo se fasse manger. */
+  flex-shrink: 0;
+
+  /* Le ratio est porté par le CADRE, et l'image le remplit (`height: 100%` +
+     `object-fit: cover` ci-dessous). Le cadrage est donc identique à toutes
+     les hauteurs de fenêtre, au lieu de dépendre de la place restante. */
+  aspect-ratio: 4 / 5;
+
   border: var(--border-width-structure) solid var(--border);
   background: var(--bg);
   overflow: hidden;
@@ -6144,8 +6166,7 @@ button:focus-visible,
 .cv-sidebar__portrait img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   object-position: center 24%;
   filter: saturate(0.88) contrast(1.02);
