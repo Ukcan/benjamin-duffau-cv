@@ -266,8 +266,11 @@ function setActiveTimelineItem(card, options = {}) {
   timelineItems.forEach((item) => {
     const active = item === card;
     item.classList.toggle("is-active", active);
+    /* `expand: false` ne TOUCHE PAS au dépliage : il ne déplace que le
+       repère de position. Refermer ici serait un piège — `focusin` passe par
+       cette fonction, donc tabuler à l'intérieur d'un poste ouvert le
+       refermerait sous les doigts. */
     if (expand) setTimelineExpandedState(item, active);
-    else setTimelineExpandedState(item, false);
   });
 
   updateTimelineNavState(card);
@@ -328,13 +331,28 @@ timelineToggles.forEach((button) => {
     event.stopPropagation();
     const card = button.closest(".timeline-item");
     if (!card) return;
-    setActiveTimelineItem(card);
+
+    /* Bascule : recliquer sur un poste ouvert le referme (demande Benji,
+       2026-09-02). Avant, le clic ne faisait qu'ouvrir — un poste déplié ne
+       pouvait plus être replié, alors que son bouton portait déjà
+       `aria-expanded`, ce qui promettait les deux sens.
+       L'ouverture continue de passer par `setActiveTimelineItem`, donc
+       l'accordéon reste exclusif ; la fermeture ne concerne que le poste visé
+       et laisse le repère de position où il est. */
+    if (card.classList.contains("open")) {
+      setTimelineExpandedState(card, false);
+    } else {
+      setActiveTimelineItem(card);
+    }
   });
 });
 
 timelineItems.forEach((item) => {
   item.addEventListener("focusin", () => {
-    setActiveTimelineItem(item);
+    /* Le clavier déplace le repère sans déplier : sans `expand: false`, le
+       `focusin` déclenché par le clic ouvrait le poste juste avant que le
+       clic ne le referme, et la bascule ne marchait plus. */
+    setActiveTimelineItem(item, { expand: false });
   });
 });
 
