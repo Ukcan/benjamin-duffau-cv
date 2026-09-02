@@ -25,26 +25,63 @@ function initCustomCursor() {
     y: window.innerHeight / 2,
     tx: window.innerWidth / 2,
     ty: window.innerHeight / 2,
-    raf: 0
+    raf: 0,
+    derniereFrame: 0
   };
 
-  const render = () => {
-    state.x += (state.tx - state.x) * 0.18;
-    state.y += (state.ty - state.y) * 0.18;
+  /* Constante de suivi du halo, exprimée en MILLISECONDES et non en fraction
+     par frame. Un lissage `* 0.18` appliqué à chaque frame rattrape 2,4 fois
+     plus vite sur un écran 144 Hz que sur un 60 Hz : l'inertie du curseur
+     dépendait donc du matériel. Ici, 70 ms pour couvrir 63 % de l'écart, quel
+     que soit le taux de rafraîchissement. */
+  const HALO_SUIVI_MS = 70;
 
-    cursorHalo.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) translate(-50%, -50%)`;
-    cursorDot.style.transform = `translate3d(${state.tx}px, ${state.ty}px, 0) translate(-50%, -50%)`;
+  const placer = (element, x, y) => {
+    element.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+  };
+
+  const render = (temps) => {
+    // Écart réel entre deux frames, plafonné : un retour d'onglet en arrière-plan
+    // produit un delta de plusieurs secondes qui ferait sauter le halo.
+    const dt = state.derniereFrame ? Math.min(temps - state.derniereFrame, 50) : 16.7;
+    state.derniereFrame = temps;
+
+    const k = 1 - Math.exp(-dt / HALO_SUIVI_MS);
+    state.x += (state.tx - state.x) * k;
+    state.y += (state.ty - state.y) * k;
+    placer(cursorHalo, state.x, state.y);
+
+    // La boucle s'arrête dès que le halo a rejoint le point : au repos, plus
+    // une seule frame n'est consommée. L'ancienne version tournait indéfiniment
+    // et réécrivait deux transforms par frame, souris immobile comprise.
+    if (Math.abs(state.tx - state.x) < 0.1 && Math.abs(state.ty - state.y) < 0.1) {
+      state.x = state.tx;
+      state.y = state.ty;
+      placer(cursorHalo, state.x, state.y);
+      state.raf = 0;
+      state.derniereFrame = 0;
+      return;
+    }
+
     state.raf = window.requestAnimationFrame(render);
   };
 
   document.addEventListener("pointermove", (event) => {
     state.tx = event.clientX;
     state.ty = event.clientY;
+
+    /* Le point est positionné ICI, dans l'écouteur, et non dans la boucle rAF.
+       Il est censé coller exactement au pointeur : passer par la frame suivante
+       lui ajoutait jusqu'à 16 ms de retard sur chaque mouvement. Seul le halo,
+       qui traîne à dessein, a besoin de la boucle. */
+    placer(cursorDot, state.tx, state.ty);
+
     document.body.classList.add("cursor-visible");
     if (!state.raf) {
+      state.derniereFrame = 0;
       state.raf = window.requestAnimationFrame(render);
     }
-  });
+  }, { passive: true });
 
   document.addEventListener("pointerdown", () => {
     document.body.classList.add("cursor-pressing");
