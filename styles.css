@@ -7504,3 +7504,92 @@ button:focus-visible,
     letter-spacing: 0.065em;
   }
 }
+
+/* ───────────────────────────────────────────────────────────────────────────
+   SUPPRIMER LE SCROLL INTERNE DE LA COLONNE DE GAUCHE (desktop uniquement)
+   ───────────────────────────────────────────────────────────────────────────
+
+   Le problème n'existe qu'à partir de 921px : sous ce seuil le panneau repasse
+   en `position: relative` + `overflow: visible` (voir @media max-width: 920px),
+   donc il n'a pas de scroll interne. À ≥921px il porte
+   `height: calc(100dvh - 2rem)` et son contenu débordait.
+
+   Relevé à 1920x870 (panneau visible 835px, contenu 953px, soit 118px de trop) :
+     top-nav « Parcourir le CV » 158 · portrait 364 · nom 23 · statut 57 ·
+     contact 189 · boutons 48 · 5 gaps + padding 112
+   Le deuxième poste n'était pas la photo mais le sommaire, à 158px pour trois
+   entrées — et c'est le seul bloc redondant du panneau, la colonne de droite
+   numérotant déjà ces sections 01/02/03.
+
+   Deux leviers, décision de Benji du 02/09/2026 :
+     1. le sommaire passe en une rangée de trois pastilles ;
+     2. la photo reçoit un plafond exprimé en dvh — elle RÉTRÉCIT
+        proportionnellement au lieu d'être rognée, et seulement quand la
+        fenêtre est trop courte.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@media (min-width: 921px) {
+  /* 1. Sommaire compact : trois colonnes au lieu de trois lignes. */
+  .cv-sidebar .menu {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.3rem;
+  }
+
+  .cv-sidebar .menu a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.05rem;
+    min-height: 0;
+    padding: 0.3rem 0.4rem;
+    border: var(--border-width-structure) solid var(--line-subtle) !important;
+    font-size: 0.7rem;
+    line-height: 1.2;
+  }
+
+  /* Le décalage au survol et la pastille « ● » de l'élément courant étaient
+     dessinés pour une liste verticale : dans une pastille de 80px de large ils
+     poussent le libellé hors du cadre. La couleur suffit à marquer l'état. */
+  .cv-sidebar .menu a:hover,
+  .cv-sidebar .menu a:focus-visible,
+  .cv-sidebar .menu a[aria-current="page"] {
+    padding-left: 0.4rem;
+    border-color: var(--primary) !important;
+  }
+
+  .cv-sidebar .menu a[aria-current="page"]::after {
+    content: none;
+  }
+}
+
+@media (min-width: 921px) {
+  /* 2. Plafond de la photo, exprimé en dvh.
+
+     Le cadre garde son ratio 4:5 et l'image le remplit toujours : la photo
+     n'est JAMAIS rognée, elle devient seulement plus petite quand la fenêtre
+     est trop courte pour tout afficher. C'est l'inverse du comportement d'avant
+     (cadre écrasé, bas de la photo mangé par `overflow: hidden`).
+
+     D'où vient 545px : le panneau visible mesure environ `100dvh - 35px`
+     (hauteur `100dvh - 2rem`, moins les bordures). Le contenu hors photo a été
+     mesuré à 495px sur un panneau large et 510px sur le plus étroit
+     (>=1101px : 495 · 1000px : 510 — le bloc contact passe à la ligne). En
+     retenant le pire cas : photo <= 100dvh - 35 - 510 = 100dvh - 545.
+
+     ⚠️ Cette constante dépend de la hauteur des AUTRES blocs du panneau
+     (contact, statut, sommaire, boutons). Si l'un d'eux change de hauteur, il
+     faut la recalibrer : mesurer `panel.scrollHeight - figure.height` sur une
+     fenêtre où le panneau déborde, et non sur une fenêtre confortable — quand
+     il y a de la marge, `margin-top: auto` sur les boutons absorbe le vide et
+     fausse la lecture.
+
+     Le plancher de 120px évite une photo timbre-poste sous ~640px de hauteur ;
+     en dessous, un léger scroll reste préférable à un portrait illisible. */
+  .cv-sidebar__portrait {
+    width: clamp(120px, calc((100dvh - 545px) * 4 / 5), 100%);
+    /* Sans ça, un cadre plus étroit que le panneau se collerait à gauche :
+       `align-items: stretch` ne s'applique plus dès que la largeur est
+       explicite, et l'item retombe au début de l'axe transversal. */
+    align-self: center;
+  }
+}
