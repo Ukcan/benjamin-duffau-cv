@@ -935,16 +935,20 @@ h2 {
   transition: border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
 }
 
+/* `.is-active` ne décore plus la carte : il ne marque que le poste courant
+   pour la frise et sa barre de progression. Il partageait ces sept règles avec
+   `.open`, si bien qu'un poste FERMÉ mais courant gardait le fond rosé et le
+   filet d'accent — une asymétrie visible entre des postes de même poids, à
+   l'état neutre (demande Benji, 2026-09-02). Seul `.open` décore désormais,
+   plus les états d'interaction `:hover` et `:focus-within`. */
 .timeline-item:hover,
 .timeline-item:focus-within,
-.timeline-item.is-active,
 .timeline-item.open {
   transform: translateY(-1px);
 }
 
 .timeline-item:hover::after,
 .timeline-item:focus-within::after,
-.timeline-item.is-active::after,
 .timeline-item.open::after {
   border-color: color-mix(in srgb, var(--primary) 36%, rgba(222, 221, 216, 0.22));
   background:
@@ -956,7 +960,6 @@ h2 {
     0 0 0 1px color-mix(in srgb, var(--primary) 14%, transparent);
 }
 
-.timeline-item.is-active::before,
 .timeline-item.open::before {
   transform: scale(1.18);
   background: color-mix(in srgb, var(--focus) 78%, white);
@@ -4205,7 +4208,6 @@ footer {
 }
 .timeline-item:hover::after,
 .timeline-item:focus-within::after,
-.timeline-item.is-active::after,
 .timeline-item.open::after {
   border-color: var(--primary) !important;
   box-shadow: 8px 8px 0 var(--primary) !important;
@@ -5552,7 +5554,6 @@ footer.section.section-open {
 .timeline-item,
 .timeline-item:hover,
 .timeline-item:focus-within,
-.timeline-item.is-active,
 .timeline-item.open {
   transform: none !important;
   box-shadow: none !important;
@@ -5561,7 +5562,6 @@ footer.section.section-open {
 .timeline-item::after,
 .timeline-item:hover::after,
 .timeline-item:focus-within::after,
-.timeline-item.is-active::after,
 .timeline-item.open::after {
   border: 0 !important;
   border-bottom: var(--border-width-structure) solid var(--line-subtle) !important;
@@ -5578,7 +5578,6 @@ footer.section.section-open {
   background: color-mix(in srgb, var(--bg) 56%, white) !important;
 }
 
-.timeline-item.is-active::after,
 .timeline-item.open::after {
   border-left: 3px solid var(--primary) !important;
   background: color-mix(in srgb, var(--primary) 3%, white) !important;
